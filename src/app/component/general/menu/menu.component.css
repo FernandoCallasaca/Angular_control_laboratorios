@@ -1,0 +1,30 @@
+.sidenav-container {
+    height: 100%;
+  }
+
+ 
+ 
+  .example-fill-remaining-space {
+    flex: 1 1 auto;
+  }
+  .imglogo1{
+    width: 200px;
+    margin-left: 2px;
+    height: auto;
+  }
+  .imglogo2{
+    width: 35px;
+    height: auto;
+    margin-left: 12px;
+  }
+  .imglogo3{
+    width: 25px;
+    height: auto;
+    margin-left: 12px;
+  }
+mat-icon{
+  margin-right: 10px;
+}
+  
+  
+  

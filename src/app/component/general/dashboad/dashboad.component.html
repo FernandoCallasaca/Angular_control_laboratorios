@@ -1,0 +1,30 @@
+<app-menu>
+    <div class="contenedorBody">
+        <h2>REPORTE ESTADISTICO</h2>
+        <div class="contenedorChart">
+
+            <div class="elementoChart">
+                <mat-card>
+                    <h3>CANTIDAD DE MANTENIMIENTOS POR PERIODO</h3>
+                    <canvas id="beneficiearioproyecto">{{myChartBenefiario}}</canvas>
+                </mat-card>
+            </div>
+
+            <div class="elementoChart">
+                <mat-card>
+                    <h3>CANTIDAD DE MANTENIMIENTOS POR TIPO</h3>
+                    <canvas id="beneficiariomantenimiento">{{myChartTipoMantenimiento}}</canvas>
+                </mat-card>
+            </div>
+
+            <div class="elementoChart">
+                <mat-card >
+                    <h3>CANTIDAD DE MANTENIMIENTOS POR DEPARTAMENTO</h3>
+                    <canvas id="beneficiariodepartamento">{{myChartDepartamentos}}</canvas>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+ 
+</app-menu>

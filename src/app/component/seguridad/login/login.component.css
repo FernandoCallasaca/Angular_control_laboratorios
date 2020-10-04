@@ -1,0 +1,89 @@
+.mat-elevation-z4{
+  background-color: white;
+
+}
+ .fondologin{
+  height: 100%;
+  width: auto;
+  margin-top: -1px;
+  padding: 0%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('../../../../assets/images/fondologin5.png');
+}
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+}
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.example-card {
+   max-width: 450px;
+   widows:450px;
+   min-width: 300px;
+ }
+ .login-contenedor{
+    height: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ .submitload{
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ .errorLogin{
+   color: red;
+   
+ }
+.example-container {
+   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.titulologin{
+  margin: 0 0 24px;
+  font-size: 32dp;
+  font-weight: 900;
+  line-height: 35px;
+  text-shadow: 0 4px 4px rgba(0,0,0,.22);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0px;
+  margin: 10px;
+  
+}
+.imglogo1{
+  width: 200px;
+  margin-left: 2px;
+  height: auto;
+}
+.imglogo2{
+  width: 35px;
+  height: auto;
+  margin-left: 12px;
+}
+.imglogo3{
+  width: 25px;
+  height: auto;
+  margin-left: 12px;
+}
+.titulo{
+  color: #3f51b5;
+}
+.mat-toolbar {
+  position: relative;
+}
+.cuerpo{
+  height: 100%;
+}
+
+
+

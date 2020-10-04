@@ -1,0 +1,211 @@
+<app-menu>
+  <div class="contenedorBody">
+    <h2> MAPA DE RECLAMOS</h2>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filtros y Exportación de Datos
+          </mat-panel-title>
+          <mat-panel-description>
+            Pulsar para desplegar las opciones
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-select placeholder="Departamento">
+            <mat-option value="0" (click)="selectdepartamento(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of departamentos" [value]="item.n_idgen_departamento"
+              (click)="selectdepartamento(item.n_idgen_departamento)">
+              {{item.c_nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Provincia">
+            <mat-option value="0" (click)="selectprovincia(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of provincias" [value]="item.n_idgen_provincia"
+              (click)="selectprovincia(item.n_idgen_provincia)">
+              {{item.c_nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Distrito">
+            <mat-option value="0" (click)="selectdistrito(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of distritos" [value]="item.n_idgen_distrito"
+              (click)="selectdistrito(item.n_idgen_distrito)">
+              {{item.c_nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Centro Poblado">
+            <mat-option value="0" (click)="selectcentropoblado(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of centropoblados" [value]="item.n_idgen_centropoblado"
+              (click)="selectcentropoblado(item.n_idgen_centropoblado)">
+              {{item.c_nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Entidad">
+            <mat-option value="0" (click)="selectentidad(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of entidades" [value]="item.n_idgen_entidad"
+              (click)="selectentidad(item.n_idgen_entidad)">
+              {{item.c_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Agregamos el Usuario-->
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Usuario">
+            <mat-option value="0" (click)="selectusuario(0)">
+              -TODOS-
+            </mat-option>
+            <mat-option *ngFor="let item of usuarios" [value]="item.n_idseg_user"
+              (click)="selectusuario(item.n_idseg_user)" required>
+              {{item.c_username}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="getReclamo();">FILTRAR</button>
+        </mat-card-actions>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-card>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]='true' [mapTypeId]="'hybrid'">
+        <agm-marker-cluster [maxZoom]="18" imagePath="http://35.184.146.235/Multimedia/Nama/images/m">
+          <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng"
+            [opacity]="marker.alpha" [iconUrl]="
+                          {
+                              url:'./assets/mapa/icono-VIVIENDA-azul.svg',
+                              scaledSize:
+                              {
+                                  width: 60,
+                                  height:90
+                              }
+                          }" (markerClick)="clicked(marker)">
+            <agm-info-window #infowindow>
+              <div id="cris2" #cris2>
+                <div>
+                  <div>
+                    <h3>Datos del Registro</h3>
+                    <div class="contenedor contendormotivo">
+                      <p> <strong>Código: </strong> {{marker.data.c_codigo}}</p>
+                      <p> <strong>Departamento: </strong> {{marker.data.c_departamento}}</p>
+                      <p> <strong>Provincia: </strong>{{marker.data.c_provincia}}</p>
+                      <p> <strong>Distrito: </strong> {{marker.data.c_distrito}}</p>
+                      <p> <strong>Localidad: </strong> {{marker.data.c_centropoblado}}</p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <h3>Datos Personales</h3>
+                  <div class="contenedor contendormotivo">
+                    <p> <strong>DNI: </strong> {{marker.data.c_dni}}</p>
+                    <p> <strong>Nombres: </strong> {{marker.data.c_nombres}}</p>
+                    <p> <strong>Ap. Paterno: </strong> {{marker.data.c_appaterno}}</p>
+                    <p> <strong>Ap. Materno: </strong> {{marker.data.c_apmaterno}}</p>
+                  </div>
+                </div>
+                <br>
+                <br>
+
+                <!--ACORDIÓN RECLAMO-->
+                <mat-accordion *ngFor="let reclamo of reclamos;
+                  let i = index" (click)="clickedAcordionReclamo(reclamo.n_idrec_reclamo)">
+                  <mat-expansion-panel style="
+                  border: 1px #CDE0E7 solid;
+                  border-radius: 10px;">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <h4>Reclamo {{i+1}}</h4>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <h5>Pulsar para desplegar la Información del Reclamo {{i+1}}</h5>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <h3>Datos del Reclamo</h3>
+                    <div id="cris2" #cris2>
+
+                      <div class="contenedor contendormotivo">
+                        <p> <strong>Reclamo: </strong> {{i+1}}</p>
+                        <p> <strong>Latitud: </strong> {{reclamo.c_latitud}}</p>
+                        <p> <strong>Longitud: </strong>{{reclamo.c_longitud}}</p>
+                        <p> <strong>Fecha: </strong>{{reclamo.c_fecha}} {{reclamo.c_hora}}</p>
+                        <p> <strong>Observación: </strong> {{reclamo.c_observacion}}</p>
+                        <p></p>
+                      </div>
+                      <h3>Datos del Técnico</h3>
+                      <div class="contenedor contendormotivo">
+                        <p> <strong>DNI: </strong> {{reclamo.c_dnitecnico}}</p>
+                        <p> <strong>Nombres: </strong> {{reclamo.c_nametecnico}}</p>
+                        <p> <strong>Apellidos </strong> {{reclamo.c_lastnametecnico}}</p>
+                        <p></p>
+                      </div>
+                      <br>
+
+                      <h3>Motivos del Reclamo</h3>
+                      <div class="contendormotivo" *ngFor="let motivo of motivosreclamos; let i = index">
+                        <h4>Motivo {{i+1}}</h4>
+                        <div class="motivosdescripcion">
+                          <p> <strong>Descripción </strong> {{motivo.c_descripcion}}</p>
+                          <p> <strong>Observación: </strong> {{motivo.c_observacion}}</p>
+                        </div>
+                        <br>
+                      </div>
+                      <p>
+                        <button mat-raised-button color="primary" (click)="downloadReclamo(marker.data)">Descargar
+                          Ficha Reclamos</button>
+                      </p>
+                      <h3>Fotos del Reclamo</h3>
+                      <div class="contenedor">
+                        <div *ngFor="let detalle of detalles" style="width: 190px; height: auto; margin:5px">
+
+                          <a target="_blank" href="{{detalle.c_nombrefoto}}" style="text-decoration: none;">
+                            <mat-card class="example-card">
+
+                              <img mat-card-image src="{{detalle.c_nombrefoto}}" style="height: 150px;" alt="">
+                              <p style="width:100%; color:black;">
+                                {{detalle.c_tipo}}
+                              </p>
+                            </mat-card>
+                          </a>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </mat-expansion-panel>
+
+                </mat-accordion>
+                <br>
+
+              </div>
+            </agm-info-window>
+          </agm-marker>
+        </agm-marker-cluster>
+      </agm-map>
+    </mat-card>
+  </div>
+
+</app-menu>

@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Edición {{catalogo.producto}}</h1>
+<form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
+  <div mat-dialog-content class="contenedor">
+
+    <mat-form-field>
+      <input matInput placeholder="Tipo" name="tipo" #c_username="ngModel" [(ngModel)]="catalogo.tipo"
+        required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Producto" name="producto" #c_username="ngModel"
+        [(ngModel)]="catalogo.producto" required/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Modelo" name="modelo" #c_username="ngModel"
+        [(ngModel)]="catalogo.modelo" required/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Marca" name="marca" #c_username="ngModel"
+        [(ngModel)]="catalogo.marca" required/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Características</mat-label>
+      <textarea rows="5" matInput name="caracteristica" #c_username="ngModel"
+      [(ngModel)]="catalogo.caracteristica" required></textarea>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+
+    <button mat-button type="submit" cdkFocusInitial [disabled]="!newForm.form.valid">
+      <mat-icon>save</mat-icon>
+      <span>Guardar</span>
+    </button>
+  </div>
+
+</form>

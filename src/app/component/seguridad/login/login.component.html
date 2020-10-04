@@ -1,0 +1,41 @@
+<div class="cuerpo"> 
+  <mat-toolbar color="primary" class="mat-elevation-z8">CONTROL DE LABORATORIOS</mat-toolbar>
+  <div class="fondologin">
+    <br />
+    <h1 class="titulologin">SISTEMA DE CONTROL DE INVENTARIO Y REPORTE DE
+      FALLAS DE EQUIPOS ELECTRÓNICOS PARA EL PROGRAMA ACADÉMICO DE
+      INGENIERIA INFORMATICA Y DE SISTEMAS</h1>
+    <div class="login-contenedor">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Acceso</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="example-container" #newForm="ngForm" (ngSubmit)="login(newForm)">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Usuario" name="c_username" #c_username="ngModel"
+                [(ngModel)]="dataLogin.c_username" required>
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput type="{{typepassword}}" placeholder="Password" name="c_password" #c_password="ngModel"
+                [(ngModel)]="dataLogin.c_password" required />
+              <mat-icon matSuffix (click)="changetipepassword()">{{iconpassword}}</mat-icon>
+            </mat-form-field>
+            <div class="submitload">
+              <button *ngIf="!flag" type="submit" color="primary" mat-button
+                matTooltip="Permite acceder a la plataforma" [disabled]="!newForm.form.valid">
+                <mat-icon>input</mat-icon>
+                <span>Ingresar</span>
+              </button>
+              <mat-spinner *ngIf="flag"></mat-spinner>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <label class="errorLogin" *ngIf="!resultado">{{resultado.cMensaje}}</label>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

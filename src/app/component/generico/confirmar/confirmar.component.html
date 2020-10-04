@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Confirmar: {{data.titulo}}</h1>
+<div mat-dialog-content>
+  <div class="contenedor" >
+
+      <p >{{data.descripcion}}</p>
+ 
+  
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button color="error" (click)="onOkClick()">Si</button>
+</div>

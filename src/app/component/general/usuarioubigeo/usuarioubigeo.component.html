@@ -1,0 +1,187 @@
+<app-menu>
+  <div class="contenedorBody">
+    <h2>ASIGNAR USUARIO POR UBICACIÓN</h2>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon matSuffix>filter_list</mat-icon> Filtros
+          </mat-panel-title>
+          <mat-panel-description>
+            Pulsar para desplegar las opciones
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="">
+
+          <mat-form-field>
+              <mat-select placeholder="Departamento" [(value)]="iddepartamento"> 
+                  <mat-option value="0" (click)="selectdepartamento()">
+                      -TODOS-
+                  </mat-option>
+                  <mat-option *ngFor="let item of departamentos" [value]="item.n_idgen_departamento"
+                      (click)="selectdepartamento()" required>
+                      {{item.c_nombre}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field><label [hidden]="iddepartamento!=-100" class="accent-color">(*)</label>
+          <mat-form-field style="margin-left: 10px;">
+              <mat-select placeholder="Provincia" [(value)]="idprovincia">
+                  <mat-option value="0" (click)="selectprovincia()">
+                      -TODOS-
+                  </mat-option>
+                  <mat-option *ngFor="let item of provincias" [value]="item.n_idgen_provincia"
+                      (click)="selectprovincia()" required> 
+                      {{item.c_nombre}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field><label [hidden]="idprovincia!=-100" class="accent-color">(*)</label>
+
+          <mat-form-field style="margin-left: 10px;">
+            <mat-select placeholder="Distrito" [(value)]="iddistrito">
+                <mat-option value="0" (click)="selectdistrito()">
+                    -TODOS-
+                </mat-option>
+                <mat-option *ngFor="let item of distritos" [value]="item.n_idgen_distrito"
+                    (click)="selectdistrito()">
+                    {{item.c_nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><label [hidden]="iddistrito!=-100" class="accent-color">(*)</label>
+        <mat-form-field style="margin-left: 10px;">
+            <mat-select placeholder="Centro Poblado" [(value)]="idcentropoblado">
+                <mat-option value="0" (click)="selectcentropoblado()">
+                    -TODOS-
+                </mat-option>
+                <mat-option *ngFor="let item of centropoblados" [value]="item.n_idgen_centropoblado"
+                    (click)="selectcentropoblado()">
+                    {{item.c_nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><label [hidden]="idcentropoblado!=-100" class="accent-color">(*)</label>
+        <mat-form-field style="margin-left: 10px;">
+            <mat-select placeholder="Entidad" [(value)]="identidad">
+                <!--<mat-option value="0" (click)="selectentidad(0)">
+                    -SELECCIONE-
+                </mat-option>-->
+                <mat-option *ngFor="let item of entidades" [value]="item.n_idgen_entidad"
+                    (click)="selectentidad()">
+                    {{item.c_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><label [hidden]="identidad!=100" class="accent-color">(*)</label>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Usuario"  [(value)]="idusuario">
+              <!--<mat-option value="100" (click)="selectusuario(100)">
+                  -SELECCIONE-
+              </mat-option>-->
+              <mat-option *ngFor="let item of usuarios" [value]="item.n_idseg_user"
+                  (click)="selectusuario()">
+                  {{item.c_username}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field><label [hidden]="idusuario!=100" class="accent-color">(*)</label>
+
+          <mat-form-field style="margin-left: 10px;">
+            <mat-select placeholder="Periodo" [(value)]="idperiodo">
+                <!--<mat-option value="0" (click)="selectperiodo(0)">
+                    -SELECCIONE-
+                </mat-option>-->
+                <mat-option *ngFor="let item of periodos" [value]="item.n_idgen_periodo"
+                    (click)="selectperiodo(item.n_idgen_periodo)">
+                    {{item.c_descripcion}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><label [hidden]="idperiodo!=100" class="accent-color">(*)</label>
+        
+        <mat-form-field style="margin-left: 10px;">
+          <mat-select placeholder="Tipo Mantenimiento" [(value)]="idmantenimiento">
+              <!--<mat-option value="0" (click)="selectmantenimiento(0)">
+                  -SELECCIONE-
+              </mat-option>-->
+              <mat-option *ngFor="let item of mantenimientos" [value]="item.n_idgen_tipoprograma"
+                  (click)="selectmantenimiento(item.n_idgen_tipoprograma)">
+                  {{item.c_descripcion}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field><label [hidden]="idmantenimiento!=100" class="accent-color">(*)</label>
+      
+      <mat-form-field style="margin-left: 10px;">
+        <mat-select placeholder="Estado" [(value)]="idestado">
+            <mat-option value="1" (click)="selectestado()">
+                Mostrar Solo Pendientes
+            </mat-option>
+            <mat-option value="0" (click)="selectestado()">
+              Mostrar Todos
+          </mat-option>
+        </mat-select>
+    </mat-form-field><label [hidden]="idestado!=100" class="accent-color">(*)</label>
+      
+      
+
+      <br>
+        <button mat-raised-button color="primary" (click)="getTablaUsuarioubigeo()">Aplicar Filtros</button>
+        &nbsp;
+        <button mat-raised-button color="primary" (click)="asignartodo()">Asignar Todo de la Lista</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br />
+    <mat-card>
+      <mat-form-field>
+        <input matInput placeholder="Buscar" [(ngModel)]="textfilter" (keyup)="applyFilter($event.target.value)">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <table mat-table [dataSource]="tablaUsuarioubigeo" matSort class="mat-elevation-z8">
+        <!-- <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> <button mat-icon-button color="primary" (click)="openDialog(null)">
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button> </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="openDialog(element)">
+              <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            </button>
+          </td>
+        </ng-container> -->
+        <ng-container matColumnDef="suministro">
+          <th mat-header-cell *matHeaderCellDef color="error"> Suministro </th>
+          <td mat-cell *matCellDef="let element"> {{element.suministro}} </td>
+        </ng-container>
+        <ng-container matColumnDef="departamento">
+          <th mat-header-cell *matHeaderCellDef color="error"> Departamento </th>
+          <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="provincia">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Provincia </th>
+          <td mat-cell *matCellDef="let element"> {{element.provincia  }} </td>
+        </ng-container>
+        <ng-container matColumnDef="distrito">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Distrito </th>
+          <td mat-cell *matCellDef="let element"> {{element.distrito}} </td>
+        </ng-container>
+        <ng-container matColumnDef="centropoblado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Centro Poblado </th>
+          <td mat-cell *matCellDef="let element"> {{element.centropoblado}} </td>
+        </ng-container>
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+          <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        </ng-container>
+        <ng-container matColumnDef="asignado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Asignar </th>
+          <td mat-cell *matCellDef="let element">
+            <input type="checkbox" [checked]="element.asignado == 1"  #chkAsignar (click)='asignar(element, chkAsignar.checked)' />
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <ng-template let-row matRowDef cdkVirtualFor [matRowDefColumns]="displayedColumns">
+          <tr mat-row></tr>
+
+        </ng-template>
+
+      </table>
+
+      <mat-paginator [pageSizeOptions]="pagin" showFirstLastButtons></mat-paginator>
+    </mat-card>
+  </div>
+</app-menu>

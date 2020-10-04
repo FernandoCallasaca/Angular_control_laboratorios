@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Edición {{usuario.username}}</h1>
+<form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
+  <div mat-dialog-content class="contenedor">
+
+    <mat-form-field>
+      <input matInput placeholder="Username" name="username" #c_username="ngModel" [(ngModel)]="usuario.username"
+        minlength="2" maxlength="100" required />
+      <mat-hint class="error" *ngIf="usuario.username.length<2">Debe agregar algun valor</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" name="password" #c_username="ngModel"
+      [(ngModel)]="usuario.password">
+      <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </a>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+
+    <button mat-button type="submit" cdkFocusInitial [disabled]="!newForm.form.valid">
+      <mat-icon>save</mat-icon>
+      <span>Guardar</span>
+    </button>
+  </div>
+
+</form>

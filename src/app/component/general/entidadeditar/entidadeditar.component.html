@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Edición {{entidad.c_name}}</h1>
+<form class="example-container" #newForm="ngForm" (ngSubmit)="guardar(newForm)">
+  <div mat-dialog-content class="contenedor">
+
+    <mat-form-field>
+      <input matInput placeholder="Nombre" name="c_name" #c_username="ngModel" [(ngModel)]="entidad.c_name"
+        minlength="3" maxlength="100" required />
+        <mat-hint class="error" *ngIf="entidad.c_name.length<3">debe tener mínimo de 3 dígitos</mat-hint>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+
+    <button mat-button type="submit" cdkFocusInitial
+      [disabled]="!newForm.form.valid||entidad.c_name==''">
+      <mat-icon>save</mat-icon>
+      <span>Guardar</span>
+    </button>
+  </div>
+</form>

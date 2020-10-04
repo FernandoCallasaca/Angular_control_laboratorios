@@ -1,0 +1,70 @@
+agm-map {
+    margin-top: 1%;
+    min-height: 300px;
+    height: 700px;
+    max-height: 700px;
+}
+li {
+    list-style: none;
+}
+canvas {
+    height: 400px;
+}
+.cuerpo{margin:2%;}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .contenedorBody {
+    margin: 1%;
+  }
+  p{
+    width: 40%;
+    margin: 5px;
+  }
+  mat-card{
+    margin-top: 10px;
+  }
+  .Table
+  {
+      display: table;
+  }
+  .Title
+  {
+      display: table-caption;
+      text-align: center;
+      font-weight: bold;
+      font-size: larger;
+  }
+  .Heading
+  {
+      display: table-row;
+      font-weight: bold;
+      text-align: center;
+  }
+  .Row
+  {
+      display: table-row;
+  }
+  .Cell
+  {
+      display: table-cell;
+      border: solid;
+      border-width: thin;
+      padding-left: 5px;
+      padding-right: 5px;
+  }
+  .motivosdescripcion{
+      display: flex;
+      justify-content: space-between;
+  }
+  .contendormotivo{
+    border: 0.5px #e4eeee solid;
+    border-radius: 10px;
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 5px;
+  }

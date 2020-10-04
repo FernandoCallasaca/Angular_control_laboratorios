@@ -1,0 +1,10 @@
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+  
+  .contenedorBody {
+    margin: 1%;
+  }

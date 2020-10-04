@@ -1,0 +1,73 @@
+<app-menu>
+    <div class="cuerpo">
+        <h1> RESUMEN CON INFORMACIÓN REFERENCIAL</h1>
+        <table mat-table [dataSource]="tabla4" class="mat-elevation-z8">
+            <ng-container matColumnDef="proyecto">
+                <th mat-header-cell *matHeaderCellDef color="error"> Proyecto </th>
+                <td mat-cell *matCellDef="let element"> {{element.proyecto}} </td>
+            </ng-container>
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef color="error"> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="avance">
+                <th mat-header-cell *matHeaderCellDef color="error"> Avance </th>
+                <td mat-cell *matCellDef="let element"> {{element.avance}} </td>
+            </ng-container>
+            <ng-container matColumnDef="l">
+                <th mat-header-cell *matHeaderCellDef color="error"> Localidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.l}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lp">
+                <th mat-header-cell *matHeaderCellDef color="error"> Linea Primaria </th>
+                <td mat-cell *matCellDef="let element"> {{element.lp}} </td>
+            </ng-container>
+            <ng-container matColumnDef="rp">
+                <th mat-header-cell *matHeaderCellDef color="error"> Red Primaria </th>
+                <td mat-cell *matCellDef="let element"> {{element.rp}} </td>
+            </ng-container>
+            <ng-container matColumnDef="rs">
+                <th mat-header-cell *matHeaderCellDef color="error"> Red Secundaria </th>
+                <td mat-cell *matCellDef="let element"> {{element.rs}} </td>
+            </ng-container>
+            <ng-container matColumnDef="aco">
+                <th mat-header-cell *matHeaderCellDef color="error"> Beneficiarios </th>
+                <td mat-cell *matCellDef="let element"> {{element.aco}} </td>
+            </ng-container>
+            <ng-container matColumnDef="presupuestobase">
+                <th mat-header-cell *matHeaderCellDef color="error"> Presupuesto Base </th>
+                <td mat-cell *matCellDef="let element"> {{element.presupuestobase}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+            </ng-container>
+            <ng-container matColumnDef="presupuestoprogramado">
+                <th mat-header-cell *matHeaderCellDef color="error"> Presupuesto Pro.</th>
+                <td mat-cell *matCellDef="let element"> {{element.presupuestoprogramado}} </td>
+            </ng-container>
+            <ng-container matColumnDef="presupuestoejecutado">
+                <th mat-header-cell *matHeaderCellDef color="error"> Presupuesto Eje. </th>
+                <td mat-cell *matCellDef="let element"> {{element.presupuestoproejecutado}} </td>
+            </ng-container>
+            <ng-container matColumnDef="plazo">
+                <th mat-header-cell *matHeaderCellDef color="error"> Plazo </th>
+                <td mat-cell *matCellDef="let element"> {{element.plazo}} </td>
+            </ng-container>
+            <ng-container matColumnDef="meses">
+                <th mat-header-cell *matHeaderCellDef color="error"> Meses </th>
+                <td mat-cell *matCellDef="let element"> {{element.meses}} </td>
+            </ng-container>
+            <ng-container matColumnDef="inicio">
+                <th mat-header-cell *matHeaderCellDef color="error"> Inicio </th>
+                <td mat-cell *matCellDef="let element"> {{element.inicio}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fin">
+                <th mat-header-cell *matHeaderCellDef color="error"> Fin </th>
+                <td mat-cell *matCellDef="let element"> {{element.fin}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns4"></tr>
+        </table>
+    </div>
+</app-menu>

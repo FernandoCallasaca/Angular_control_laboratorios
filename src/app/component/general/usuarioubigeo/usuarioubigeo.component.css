@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+  }
+  
+  .contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .contenedorBody {
+    margin: 1%;
+  }
+
+  .accent-color {
+    color: red;
+  }

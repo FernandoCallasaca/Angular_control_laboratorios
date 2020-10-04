@@ -1,0 +1,88 @@
+<h1 mat-dialog-title>Edición docente {{docente.nombres}}</h1>
+<form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
+  <div mat-dialog-content class="contenedor">
+
+    <mat-form-field>
+      <input matInput placeholder="Nombre" name="nombres" #c_username="ngModel" [(ngModel)]="docente.nombres"
+        minlength="2" maxlength="100" required />
+      <mat-hint class="error" *ngIf="docente.nombres.length<2">Debe agregar algun valor</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Apellidos" name="apellidos" #c_username="ngModel"
+        [(ngModel)]="docente.apellidos" type='text' required/>
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td>
+        <mat-form-field>
+          <mat-label>DNI</mat-label>
+          <input matInput #dni placeholder="Ex. 00000000" name="dni" #c_username="ngModel"
+            [(ngModel)]="docente.dni" type='number' required maxlength="8"/>
+            <mat-hint class="error" *ngIf="docente.dni.length > 8">El DNI tiene que ser igual a 8</mat-hint>
+            <mat-hint align="end">{{dni.value.length}} / 8</mat-hint>
+        </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Teléfono</mat-label>
+        <span matPrefix>+51 &nbsp;</span>
+        <input type="number" matInput placeholder="555-555-1234" name="telefono" #c_username="ngModel"
+        [(ngModel)]="docente.telefono" required>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </td>
+    </tr></table>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput placeholder="Ex. pat@example.com" name="correo" c_username="ngModel"
+      [(ngModel)]="docente.correo" required type="email">
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Condición</mat-label>
+          <mat-select [(ngModel)]="docente.condicion" name="condicion" required>
+            <mat-option *ngFor="let condicion of condiciones" [value]="condicion.value" (click)="selectCategoria(condicion.value)">
+              {{condicion.viewValue}}
+            </mat-option>
+          </mat-select>
+          <!-- <mat-hint align="end">Nombrado / Contratado ^</mat-hint> -->
+        </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>Régimen</mat-label>
+        <mat-select [(ngModel)]="docente.regimen" name="regimen" required>
+          <mat-option *ngFor="let regimen of regimenes" [value]="regimen.value">
+            {{regimen.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+
+      <mat-form-field>
+        <mat-label>Categoría</mat-label>
+        <mat-select [disabled]="activarCategoria" [(ngModel)]="docente.categoria" name="categoria" required>
+          <mat-option *ngFor="let categoria of nombreCategoria" [value]="categoria.value">
+            {{categoria.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </td>
+    </tr></table>  
+
+  </div>
+  <div mat-dialog-actions>
+
+    <button color="primary" mat-button type="submit" cdkFocusInitial [disabled]="!newForm.form.valid">
+      <mat-icon>save</mat-icon>
+      <span>Guardar</span>
+    </button>
+  </div>
+
+</form>

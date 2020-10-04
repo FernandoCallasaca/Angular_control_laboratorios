@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class="row">
+        <div style="margin: 10px; display: inline; float: left; position:relative; top:5px; left:10px;">
+            <button mat-button color="primary" (click)="download()">FICHA RECONEXION - CORTE</button>
+        </div>
+        <div class="progress progress-striped active" style="margin: 5px; float:left">
+            <div style="margin: 5px;" *ngIf="edited==true" class="alert alert-success alert-dismissible fade in"
+                role="alert">
+                <strong style="font-size: small;">Descargando {{i-1}} de {{cantidad}}</strong>
+                <mat-spinner style="margin-left: 20px;" diameter="25"></mat-spinner>
+            </div>
+        </div>
+    </div>
+</div>
