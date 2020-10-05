@@ -113,7 +113,8 @@ import { SoportetecnicoeditarComponent } from './component/soportetecnicoeditar/
     ResetearclaveComponent,
     DocenteeditarComponent,
     CatalogoeditarComponent,
-    UsereditComponent
+    UsereditComponent,
+    SoportetecnicoeditarComponent
   ],
   providers: [appRoutingProviders, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

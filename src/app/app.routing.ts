@@ -16,6 +16,7 @@ import { FormatoReclamoComponent } from './component/general/formato-reclamo/for
 import { DocenteComponent } from './component/docente/docente.component';
 import { CatalogoComponent } from './component/catalogo/catalogo.component';
 import { UserComponent } from './component/user/user.component';
+import { SoportetecnicoComponent } from './component/soportetecnico/soportetecnico.component';
 
 //Array de rutas
 const appRoutes:Routes=[
@@ -35,6 +36,7 @@ const appRoutes:Routes=[
     {path: 'docente', component: DocenteComponent},
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'usuario', component: UserComponent},
+    {path: 'soportetecnico', component: SoportetecnicoComponent},
 
 
 

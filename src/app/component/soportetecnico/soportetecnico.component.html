@@ -1,1 +1,61 @@
-<p>soportetecnico works!</p>
+<app-menu>
+    <div class="contenedorBody">
+      <h2> ADMINISTRACIÓN SOPORTE TÉCNICOS</h2>
+      <br/>
+      <mat-card>
+        <mat-form-field>
+          <input matInput placeholder="Buscar" [(ngModel)]="textfilter" (keyup)="applyFilter($event.target.value)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <table mat-table [dataSource]="tablaSoporteTecnico" matSort class="mat-elevation-z8">
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> <button mat-icon-button color="primary" (click)="openDialog(null)">
+                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+              </button> </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="openDialog(element)">
+                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef color="error"> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+          </ng-container>
+          <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef color="error"> Apellidos </th>
+            <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef color="error"> DNI </th>
+            <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
+          </ng-container>
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef color="error"> Teléfono </th>
+            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+          </ng-container>
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef color="error"> User Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          </ng-container>
+          <!-- Button Eliminar -->
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="error" (click)="eliminar(element)">
+                <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <ng-template let-row matRowDef cdkVirtualFor [matRowDefColumns]="displayedColumns">
+            <tr mat-row></tr>
+  
+          </ng-template>
+  
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="pagin" showFirstLastButtons></mat-paginator>
+      </mat-card>
+    </div>
+  </app-menu>
