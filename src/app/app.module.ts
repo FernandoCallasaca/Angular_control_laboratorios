@@ -52,6 +52,8 @@ import { UserComponent } from './component/user/user.component';
 import { UsereditComponent } from './component/useredit/useredit.component';
 import { SoportetecnicoComponent } from './component/soportetecnico/soportetecnico.component';
 import { SoportetecnicoeditarComponent } from './component/soportetecnicoeditar/soportetecnicoeditar.component';
+import { EquipoComponent } from './component/equipo/equipo.component';
+import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { SoportetecnicoeditarComponent } from './component/soportetecnicoeditar/
     UsereditComponent,
     SoportetecnicoComponent,
     SoportetecnicoeditarComponent,
+    EquipoComponent,
+    EquipoeditarComponent,
   ],
   imports: [
     FormsModule,

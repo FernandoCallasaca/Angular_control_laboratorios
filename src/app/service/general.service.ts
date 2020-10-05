@@ -94,6 +94,31 @@ export class GeneralService {
     }
 
 
+    getEquipo(token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        return this._http.post(this.url + 'general/getequipo', {}, { headers: reqHeader });
+    }
+    deleteEquipo(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/deleteequipo', data, { headers: reqHeader });
+    }
+    saveEquipo(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/saveequipo', data, { headers: reqHeader });
+    }
+
+
 
 
 
