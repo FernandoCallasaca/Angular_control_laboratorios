@@ -85,7 +85,7 @@ export class DocenteComponent extends BaseComponent implements OnInit {
     }
     this._general_service.getDocente(this.getToken().token).subscribe(
       result => {
-        try {
+        try { 
           if (result.estado) {
             console.log(result);
             this.tablaDocente = new MatTableDataSource < any > (result.data);

@@ -48,7 +48,7 @@ import {
   styleUrls: ['./equipo.component.css'],
   providers: [GeneralService]
 })
-export class EquipoComponent implements OnInit {
+export class EquipoComponent extends BaseComponent implements OnInit {
   
   tit: String = "Equipo";
 
@@ -109,7 +109,7 @@ export class EquipoComponent implements OnInit {
   }
 
   openDialog(equipo): void {
-    const dialogRef = this.dialog.open(DocenteeditarComponent, {
+    const dialogRef = this.dialog.open(EquipoeditarComponent, {
       width: '750px',
       data: {
         equipo: equipo

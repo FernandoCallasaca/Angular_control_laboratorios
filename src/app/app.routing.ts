@@ -17,6 +17,7 @@ import { DocenteComponent } from './component/docente/docente.component';
 import { CatalogoComponent } from './component/catalogo/catalogo.component';
 import { UserComponent } from './component/user/user.component';
 import { SoportetecnicoComponent } from './component/soportetecnico/soportetecnico.component';
+import { EquipoComponent } from './component/equipo/equipo.component';
 
 //Array de rutas
 const appRoutes:Routes=[
@@ -37,10 +38,11 @@ const appRoutes:Routes=[
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'usuario', component: UserComponent},
     {path: 'soportetecnico', component: SoportetecnicoComponent},
+    {path: 'equipo', component: EquipoComponent},
 
 
 
-    {path:'**',component:DocenteComponent}
+    {path: '**', component: LoginComponent}
 ]
 export const appRoutingProviders: any[] = [];
 export const routing1: ModuleWithProviders = RouterModule.forRoot(appRoutes);

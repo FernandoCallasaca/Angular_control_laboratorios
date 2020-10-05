@@ -19,9 +19,9 @@ import {
 } from '../../common/appsettings';
 
 import {
-  Docentes,
-  DocentesEditar
-} from '../../interface/docente.interface';
+  Equipos,
+  EquiposEditar
+} from '../../interface/equipo.interface';
 import {
   ResultadoApi
 } from '../../interface/common.interface';
@@ -36,9 +36,9 @@ import {
   styleUrls: ['./equipoeditar.component.css'],
   providers: [GeneralService]
 })
-export class EquipoeditarComponent implements OnInit {
+export class EquipoeditarComponent extends BaseComponent implements OnInit {
 
-  equipo = [];
+  equipos = [];
 
   estado =  [{
       value: 'activo',
@@ -51,20 +51,20 @@ export class EquipoeditarComponent implements OnInit {
   ];
 
   ubicacion = [
-    { value: 'LAB-301', viewValue: 'LAB-301' },
-    { value: 'LAB-302', viewValue: 'LAB-302' },
-    { value: 'LAB-303', viewValue: 'LAB-303' },
-    { value: 'LAB-304', viewValue: 'LAB-304' },
-    { value: 'LAB-305', viewValue: 'LAB-305' },
-    { value: 'LAB-306', viewValue: 'LAB-306' },
-    { value: 'LAB-307', viewValue: 'LAB-307' },
-    { value: 'LAB-308', viewValue: 'LAB-308' },
-    { value: 'LAB-309', viewValue: 'LAB-309' },
-    { value: '0', viewValue: 'Almacen' },
+    { value: 1, viewValue: 'LAB-301' },
+    { value: 2, viewValue: 'LAB-302' },
+    { value: 3, viewValue: 'LAB-303' },
+    { value: 4, viewValue: 'LAB-304' },
+    { value: 5, viewValue: 'LAB-305' },
+    { value: 6, viewValue: 'LAB-306' },
+    { value: 7, viewValue: 'LAB-307' },
+    { value: 8, viewValue: 'LAB-308' },
+    { value: 9, viewValue: 'LAB-309' },
+    { value: 0, viewValue: 'Almacen' },
   ];
 
 
-  equipo: Equipo;
+  equipo: Equipos;
 
   editar: boolean;
 
@@ -72,7 +72,7 @@ export class EquipoeditarComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef < EquipoeditarComponent >,
               private _general_services: GeneralService,
-              @Inject(MAT_DIALOG_DATA) public data: EquipoEditar,
+              @Inject(MAT_DIALOG_DATA) public data: EquiposEditar,
               public _router: Router,
               public snackBar: MatSnackBar) {
     super(snackBar, _router);
@@ -85,13 +85,12 @@ export class EquipoeditarComponent implements OnInit {
         id_equipo: 0,
         id_catalogo: '',
         estado: '',
-        ubicacion: ''
+        ubicacion: 0
       };
       this.identidad = 0;
     } else {
       this.editar = true;
       this.equipo = this.data.equipo;
-
     }
   }
 
