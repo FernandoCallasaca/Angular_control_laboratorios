@@ -1,6 +1,8 @@
 export interface Equipos {
     id_equipo: number;
-    id_catalogo: string;
+    producto: string;
+    modelo: string;
+    marca: string;
     estado: string;
     ubicacion: number;
 }

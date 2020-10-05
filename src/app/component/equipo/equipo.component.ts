@@ -54,7 +54,7 @@ export class EquipoComponent extends BaseComponent implements OnInit {
 
   textfilter = '';
 
-  displayedColumns: string[] = ['editar', 'catalogo', 'estado', 'ubicacion', 'eliminar'];
+  displayedColumns: string[] = ['editar', 'producto', 'modelo', 'marca','estado', 'ubicacion', 'eliminar'];
 
 
   public tablaEquipo: MatTableDataSource < any > ;
