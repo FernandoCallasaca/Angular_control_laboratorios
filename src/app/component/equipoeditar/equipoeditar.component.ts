@@ -29,6 +29,7 @@ import {
 import {
   GeneralService
 } from '../../service/general.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-equipoeditar',
@@ -36,6 +37,7 @@ import {
   styleUrls: ['./equipoeditar.component.css'],
   providers: [GeneralService]
 })
+
 export class EquipoeditarComponent extends BaseComponent implements OnInit {
   
   equipos = [];
@@ -50,7 +52,8 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     }
   ];
 
-  ubicacion = [
+  myControl: FormControl = new FormControl();
+  ubicaciones = [
     { value: 1, viewValue: 'LAB-301' },
     { value: 2, viewValue: 'LAB-302' },
     { value: 3, viewValue: 'LAB-303' },

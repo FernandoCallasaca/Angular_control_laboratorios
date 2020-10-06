@@ -54,6 +54,7 @@ import { SoportetecnicoComponent } from './component/soportetecnico/soportetecni
 import { SoportetecnicoeditarComponent } from './component/soportetecnicoeditar/soportetecnicoeditar.component';
 import { EquipoComponent } from './component/equipo/equipo.component';
 import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.com
     MatDatepickerModule,
     AgmJsMarkerClustererModule,
     MatStepperModule,
+    MatAutocompleteModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDpcWweoH2IqPSGvBX91N46EsIdY-IfNiY'
     })
