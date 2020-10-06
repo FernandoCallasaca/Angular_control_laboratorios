@@ -37,10 +37,10 @@ import {
   providers: [GeneralService]
 })
 export class EquipoeditarComponent extends BaseComponent implements OnInit {
-
+  
   equipos = [];
 
-  estado =  [{
+  estados =  [{
       value: 'activo',
       viewValue: 'Activo'
     },
@@ -63,7 +63,7 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     { value: 0, viewValue: 'Almacen' },
   ];
 
-
+  
   equipo: Equipos;
 
   editar: boolean;
@@ -83,7 +83,9 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
       this.editar = false;
       this.equipo = {
         id_equipo: 0,
-        id_catalogo: '',
+        producto:'',
+        modelo:'',
+        marca:'',
         estado: '',
         ubicacion: 0
       };
@@ -128,5 +130,5 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
         }
       });
   }
-
+  
 }

@@ -1,11 +1,6 @@
-<h1 mat-dialog-title>Edición {{catalogo.producto}}</h1>
+<h1 mat-dialog-title>Edición {{equipo.producto}}</h1>
 <form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
   <div mat-dialog-content class="contenedor">
-
-    <mat-form-field>
-      <input matInput placeholder="Tipo" name="tipo" #c_username="ngModel" [(ngModel)]="catalogo.tipo"
-        required />
-    </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Producto" name="producto" #c_username="ngModel"
@@ -23,10 +18,13 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Características</mat-label>
-      <textarea rows="5" matInput name="caracteristica" #c_username="ngModel"
-      [(ngModel)]="catalogo.caracteristica" required></textarea>
-    </mat-form-field>
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="equipo.estado" name="estado" required>
+            <mat-option *ngFor="let estado of estados" [value]="estado.value">
+            {{estado.viewValue}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>  
 
   </div>
   <div mat-dialog-actions>
