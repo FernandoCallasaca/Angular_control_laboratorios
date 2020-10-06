@@ -120,7 +120,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     DocenteeditarComponent,
     CatalogoeditarComponent,
     UsereditComponent,
-    SoportetecnicoeditarComponent
+    SoportetecnicoeditarComponent,
+    EquipoeditarComponent
   ],
   providers: [appRoutingProviders, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
