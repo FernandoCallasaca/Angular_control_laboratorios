@@ -45,12 +45,18 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
   estados =  [{
       value: 'activo',
       viewValue: 'Activo'
-    },
-    {
+    }, {
       value: 'mantenimiento',
       viewValue: 'Mantenimiento'
-    }
-  ];
+    }];
+
+  tipos= [{
+    value: 'software',
+    viewValue: 'Software'
+  }, {
+    value: 'hardware',
+    viewValue: 'Hardware'
+  }];
 
   myControl: FormControl = new FormControl();
   ubicaciones = [
@@ -66,11 +72,8 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     { value: 0, viewValue: 'Almacen' },
   ];
 
-  
   equipo: Equipos;
-
   editar: boolean;
-
   identidad = 0;
 
   Producto: FormControl = new FormControl();

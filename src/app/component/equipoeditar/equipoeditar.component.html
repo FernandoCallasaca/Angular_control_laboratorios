@@ -6,6 +6,16 @@
       <tr>
         <td>
           <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="equipo.tipo" name="tipo" required>
+              <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
+                {{tipo.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
             <input type="text" 
                   matInput 
                   placeholder="Producto" 
@@ -21,7 +31,8 @@
             </mat-autocomplete>
           </mat-form-field>          
         </td>
-
+      </tr>
+      <tr>
         <td>
           <mat-form-field>
             <input matInput placeholder="Modelo" name="modelo" #c_username="ngModel" [(ngModel)]="equipo.modelo"
@@ -29,9 +40,6 @@
             <mat-hint class="error" *ngIf="equipo.modelo.length2">Campo Obligatorio *</mat-hint>
           </mat-form-field>
         </td>
-
-      </tr>
-      <tr>
         <td>
           <mat-form-field>
             <input matInput placeholder="Marca" name="marca" #c_username="ngModel" [(ngModel)]="equipo.marca"
