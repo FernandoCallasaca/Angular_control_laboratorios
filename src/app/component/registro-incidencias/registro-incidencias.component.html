@@ -1,0 +1,89 @@
+<app-menu>
+    <form class="example-form">
+        <div class="contenedorBody">
+            <h2>Registro de Incidencias</h2>
+            <div class="cabecera">
+                <mat-label>Codigo del Docente:</mat-label>
+                <mat-form-field class="example-fifty-width">
+                    <input type="text"
+                        placeholder="Ingrese su código"
+                        aria-label="Number"
+                        matInput
+                        [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option (click)="cambiarIdDoc(option)" *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+            <table class="example-eighty-width" cellspacing="0">
+                <tr>
+                    <td style="padding: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <mat-label *ngIf="idDoc >= 0">{{ docentes[idDoc].nombres }}</mat-label>
+                            <mat-label *ngIf="idDoc === -1">Nombres</mat-label>
+                            <input matInput [disabled]="true">
+                        </mat-form-field>
+                    </td>
+                    <td style="padding: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <mat-label *ngIf="idDoc >= 0">{{ docentes[idDoc].apellidos }}</mat-label>
+                            <mat-label *ngIf="idDoc === -1">Apellidos</mat-label>
+                            <input matInput [disabled]="true">
+                        </mat-form-field>
+                    </td>
+                    <td style="padding: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <mat-label *ngIf="idDoc >= 0">{{ docentes[idDoc].dni }}</mat-label>
+                            <mat-label *ngIf="idDoc === -1">DNI</mat-label>
+                            <input matInput [disabled]="true">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <div class="cabecera">
+                <mat-label>Número de Laboratorio:</mat-label>
+                <mat-form-field appearance="">
+                    <mat-label>Elije un laboratorio</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option (click)="cambiarIdLab(option)" *ngFor="let option of laboratorios" [value]="option">
+                            LAB 30{{option}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-label>Equipo:</mat-label>
+                <mat-form-field appearance="">
+                    <mat-label>Elije un Equipo de el Laboratorio</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option (click)="selectEquipo(option)" *ngFor="let option of eqLab" [value]="option">
+                            Eq. {{option}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <br>
+            <div style="align-items: end;" class="cabecera">
+                <mat-form-field appearance="" style="width: 45%;" >
+                    <mat-label>Motivos</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option (click)="cambiarIdMotivo(option.id_motivo)" *ngFor="let option of motivos" [value]="option.id_motivo">
+                            {{option.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="tabla example-full-width mat-elevation-z1">
+                    <mat-label>Escriba una descripción sobre la incidencia</mat-label>
+                    <textarea style="padding: 0px;" rows="8" matInput placeholder="El problema que encontré es..."></textarea>
+                </mat-form-field>
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <button mat-flat-button color="primary" (click)="guardarIncidencia()">Guardar</button>
+            </div>
+        </div>
+    </form>
+</app-menu>

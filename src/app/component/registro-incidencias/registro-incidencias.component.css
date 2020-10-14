@@ -1,0 +1,47 @@
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contenedorBody {
+    margin: 1%;
+}
+
+.cabecera {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+.example-form {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.example-fifty-width {
+    width: 50%;
+}
+.example-eighty-width {
+    margin: 15px;
+    width: 100%;
+}
+
+.example-container {
+    height: 400px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.tabla {
+    height: 200px;
+    overflow: auto;
+    width: 40%;
+}

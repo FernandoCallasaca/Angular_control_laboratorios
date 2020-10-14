@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import{FormsModule} from '@angular/forms';
-import{HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import{HashLocationStrategy,LocationStrategy} from '@angular/common'
-import{routing1,appRoutingProviders} from './app.routing';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { routing1, appRoutingProviders } from './app.routing';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -55,6 +55,7 @@ import { SoportetecnicoeditarComponent } from './component/soportetecnicoeditar/
 import { EquipoComponent } from './component/equipo/equipo.component';
 import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     SoportetecnicoeditarComponent,
     EquipoComponent,
     EquipoeditarComponent,
+    RegistroIncidenciasComponent,
   ],
   imports: [
     FormsModule,

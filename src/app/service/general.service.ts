@@ -92,8 +92,6 @@ export class GeneralService {
         });
         return this._http.post(this.url + 'general/getsoportetecnico', {}, { headers: reqHeader });
     }
-
-
     getEquipo(token): Observable<any> {
         var reqHeader = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -116,6 +114,13 @@ export class GeneralService {
         });
         console.log(data)
         return this._http.post(this.url + 'general/saveequipo', data, { headers: reqHeader });
+    }
+    getMotivosIncidencia(token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        return this._http.post(this.url + 'general/getmotivosincidencia', {}, { headers: reqHeader });
     }
 
 

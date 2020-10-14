@@ -18,6 +18,8 @@ import { CatalogoComponent } from './component/catalogo/catalogo.component';
 import { UserComponent } from './component/user/user.component';
 import { SoportetecnicoComponent } from './component/soportetecnico/soportetecnico.component';
 import { EquipoComponent } from './component/equipo/equipo.component';
+import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
+
 
 //Array de rutas
 const appRoutes:Routes=[
@@ -39,6 +41,7 @@ const appRoutes:Routes=[
     {path: 'usuario', component: UserComponent},
     {path: 'soportetecnico', component: SoportetecnicoComponent},
     {path: 'equipo', component: EquipoComponent},
+    {path: 'registroincidencias', component: RegistroIncidenciasComponent},
 
 
 
