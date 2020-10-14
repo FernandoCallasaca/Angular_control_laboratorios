@@ -2,17 +2,45 @@
 <form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
   <div mat-dialog-content class="contenedor">
 
-    <mat-form-field>
-      <input matInput placeholder="Producto" name="producto" #c_username="ngModel" [(ngModel)]="equipo.producto"
-        minlength="2" maxlength="100" required />
-      <mat-hint class="error" *ngIf="equipo.producto.length<2">Debe agregar algun valor</mat-hint>
-    </mat-form-field>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input type="text" 
+                  matInput 
+                  placeholder="Producto" 
+                  formControlName="Producto" 
+                  required
+                  [matAutocomplete]="autoGroup">
+            <mat-autocomplete #autoGroup="matAutocomplete">
+              <mat-optgroup *ngFor="let producto of productos" [label]="producto.letter">
+                <mat-option *ngFor="let name of producto.names" [value]="name">
+                  {{name}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>          
+        </td>
 
-    <mat-form-field>
-      <input matInput placeholder="Marca" name="marca" #c_username="ngModel"
-        [(ngModel)]="equipo.marca" type='text' required/>
-    </mat-form-field>
-    
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Modelo" name="modelo" #c_username="ngModel" [(ngModel)]="equipo.modelo"
+              minlength="2" maxlength="100" required />
+            <mat-hint class="error" *ngIf="equipo.modelo.length2">Campo Obligatorio *</mat-hint>
+          </mat-form-field>
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Marca" name="marca" #c_username="ngModel" [(ngModel)]="equipo.marca"
+              type='text' required />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
     <mat-form-field>
       <mat-label>Estado</mat-label>
       <mat-select [(ngModel)]="equipo.estado" name="estado" required>
@@ -21,20 +49,16 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-     
+
     <mat-form-field class="example-full-width">
-      <input type="text"
-              placeholder="Ubicación"
-              aria-label="Number"
-              matInput
-              [formControl]="myControl"
-              [matAutocomplete]="auto">
+      <input type="text" placeholder="Ubicación" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.value">
+        <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.viewValue">
           {{ubicacion.viewValue}}
         </mat-option>
       </mat-autocomplete>
-    </mat-form-field>   
+    </mat-form-field>
   </div>
   <div mat-dialog-actions>
 

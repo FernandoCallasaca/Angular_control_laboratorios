@@ -20,7 +20,7 @@ import {
 
 import {
   Equipos,
-  EquiposEditar
+  EquiposEditar,
 } from '../../interface/equipo.interface';
 import {
   ResultadoApi
@@ -73,13 +73,28 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
 
   identidad = 0;
 
+  Producto: FormControl = new FormControl();
+  productos = [{
+    letter: 'C',
+    names: ['Computadora', 'CPU']
+  }, {
+    letter: 'M',
+    names: ['Mouse', 'Monitor']
+  }, {
+    letter: 'T',
+    names: ['Teclado']
+  }, {
+    letter: 'P',
+    names: ['Proyector', 'Pizarra', 'Parlantes']
+  }];
+  
   constructor(public dialogRef: MatDialogRef < EquipoeditarComponent >,
               private _general_services: GeneralService,
               @Inject(MAT_DIALOG_DATA) public data: EquiposEditar,
               public _router: Router,
               public snackBar: MatSnackBar) {
     super(snackBar, _router);
-  }
+  }  
 
   ngOnInit() {
     if (this.data.equipo == null) {
