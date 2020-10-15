@@ -19,7 +19,7 @@ import { UserComponent } from './component/user/user.component';
 import { SoportetecnicoComponent } from './component/soportetecnico/soportetecnico.component';
 import { EquipoComponent } from './component/equipo/equipo.component';
 import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
-
+import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
 
 //Array de rutas
 const appRoutes:Routes=[
@@ -42,6 +42,7 @@ const appRoutes:Routes=[
     {path: 'soportetecnico', component: SoportetecnicoComponent},
     {path: 'equipo', component: EquipoComponent},
     {path: 'registroincidencias', component: RegistroIncidenciasComponent},
+    {path: 'controlincidencias', component: ControlIncidenciasComponent},
 
 
 

@@ -56,6 +56,7 @@ import { EquipoComponent } from './component/equipo/equipo.component';
 import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
+import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { RegistroIncidenciasComponent } from './component/registro-incidencias/r
     EquipoComponent,
     EquipoeditarComponent,
     RegistroIncidenciasComponent,
+    ControlIncidenciasComponent,
   ],
   imports: [
     FormsModule,

@@ -9,28 +9,6 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AppSettings } from 'src/app/common/appsettings';
 
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
 @Component({
   selector: 'app-registro-incidencias',
   templateUrl: './registro-incidencias.component.html',
@@ -56,10 +34,9 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
 
   idMotivo = -1;
   motivos = [];
-  descripcionMotivos = [];
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  descripcion: String = '';
+
 
   constructor(
     public snackBar: MatSnackBar,
@@ -171,10 +148,31 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
   }
 
   guardarIncidencia() {
-    console.log(`Docente ${this.idDoc + 1}`);
-    console.log(`Laboratorio ${this.idLab}`);
-    console.log(`Equipo ${this.idEquipo}`);
-    console.log(`Motivo ${this.idMotivo}`);
+    const req = {
+      id_docente: this.idDoc,
+      id_equipo: this.idEquipo,
+      id_motivo: this.idMotivo,
+      descripcion: this.descripcion
+    };
+    this.generalService.saveIncidencia(req, this.getToken().token).subscribe(
+      result => {
+        console.log('Entro');
+        if (result.estado) {
+          console.log('Se guardó correctamente la incidencia');
+        } else {
+          this.openSnackBar(result.mensaje, 99);
+        }
+      }, error => {
+        try {
+          this.openSnackBar(error.error.Detail, error.error.StatusCode);
+        } catch (error) {
+          this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
+        }
+      });
+    console.log(`Docente: ${this.idDoc + 1}`);
+    console.log(`Laboratorio: ${this.idLab}`);
+    console.log(`Equipo: ${this.idEquipo}`);
+    console.log(`Motivo: ${this.idMotivo}`);
+    console.log(`Descripción: ${this.descripcion}`);
   }
-
 }

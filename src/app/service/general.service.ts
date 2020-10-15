@@ -122,6 +122,21 @@ export class GeneralService {
         });
         return this._http.post(this.url + 'general/getmotivosincidencia', {}, { headers: reqHeader });
     }
+    saveIncidencia(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/saveincidencia', data, { headers: reqHeader });
+    }
+    getIncidencias(token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        return this._http.post(this.url + 'general/getincidencias', {}, { headers: reqHeader });
+    }
 
 
 
