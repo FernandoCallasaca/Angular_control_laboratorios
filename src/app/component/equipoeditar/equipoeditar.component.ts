@@ -30,6 +30,7 @@ import {
   GeneralService
 } from '../../service/general.service';
 import { FormControl } from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-equipoeditar',
@@ -39,67 +40,40 @@ import { FormControl } from '@angular/forms';
 })
 
 export class EquipoeditarComponent extends BaseComponent implements OnInit {
-  
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
+
   equipos = [];
+  idLab = -1;
+  laboratorios = [];
 
-  estados =  [{
-      value: 'activo',
-      viewValue: 'Activo'
-    }, {
-      value: 'mantenimiento',
-      viewValue: 'Mantenimiento'
-    }];
-
-  tipos= [{
-    value: 'software',
-    viewValue: 'Software'
-  }, {
-    value: 'hardware',
-    viewValue: 'Hardware'
-  }];
-
-  myControl: FormControl = new FormControl();
-  ubicaciones = [
-    { value: 1, viewValue: 'LAB-301' },
-    { value: 2, viewValue: 'LAB-302' },
-    { value: 3, viewValue: 'LAB-303' },
-    { value: 4, viewValue: 'LAB-304' },
-    { value: 5, viewValue: 'LAB-305' },
-    { value: 6, viewValue: 'LAB-306' },
-    { value: 7, viewValue: 'LAB-307' },
-    { value: 8, viewValue: 'LAB-308' },
-    { value: 9, viewValue: 'LAB-309' },
-    { value: 0, viewValue: 'Almacen' },
-  ];
+  idProd = -1;
+  productos = [];
+  disableSelect = new FormControl(false);
 
   equipo: Equipos;
   editar: boolean;
   identidad = 0;
 
-  Producto: FormControl = new FormControl();
-  productos = [{
-    letter: 'C',
-    names: ['Computadora', 'CPU']
+  estados =  [{
+    value: 'activo',
+    viewValue: 'Activo'
   }, {
-    letter: 'M',
-    names: ['Mouse', 'Monitor']
-  }, {
-    letter: 'T',
-    names: ['Teclado']
-  }, {
-    letter: 'P',
-    names: ['Proyector', 'Pizarra', 'Parlantes']
+    value: 'mantenimiento',
+    viewValue: 'Mantenimiento'
   }];
-  
+
   constructor(public dialogRef: MatDialogRef < EquipoeditarComponent >,
-              private _general_services: GeneralService,
-              @Inject(MAT_DIALOG_DATA) public data: EquiposEditar,
-              public _router: Router,
-              public snackBar: MatSnackBar) {
-    super(snackBar, _router);
-  }  
+    private generalService: GeneralService,
+    @Inject(MAT_DIALOG_DATA) public data: EquiposEditar,
+    public _router: Router,
+    public snackBar: MatSnackBar) {
+      super(snackBar, _router);
+  } 
 
   ngOnInit() {
+    this.getLaboratorios();
+    this.getProductos();
     if (this.data.equipo == null) {
       this.editar = false;
       this.equipo = {
@@ -117,18 +91,57 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     }
   }
 
-  AlertaGuardadoElemento( newForm ) {
+  getProductos() {
+    const req1 = { };
+    this.generalService.getCatalogo (this.getToken().token).subscribe(
+      result => {
+        if (result.estado) {
+          this.productos = result.data;
+          console.log(this.productos);
+        } else {
+          this.openSnackBar(result.mensaje, 99);
+        }
+      }, error => {
+        try {
+          this.openSnackBar(error.error.Detail, error.error.StatusCode);
+        } catch (error) {
+          this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
+        }
+      });
+  }
+
+  getLaboratorios() {
+    const req1 = { };
+    this.generalService.getEquipo(this.getToken().token).subscribe(
+      result => {
+        if (result.estado) {
+          this.equipos = result.data;
+          const distinto = (valor, indice, self) => {
+            return self.indexOf(valor) === indice;
+          };
+          this.laboratorios = this.equipos.map(equipo => equipo.ubicacion).filter(distinto).sort();
+        } else {
+          this.openSnackBar(result.mensaje, 99);
+        }
+      }, error => {
+        try {
+          this.openSnackBar(error.error.Detail, error.error.StatusCode);
+        } catch (error) {
+          this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
+        }
+      });
+  }
+  AlertaGuardadoElemento( ) {
     // Preguntamos si desea Guardar el Registro
     const mensaje = confirm('¿Te gustaría Guardar el Equipo?');
     // Detectamos si el usuario acepto el mensaje
     if (mensaje) {
-      this.guardar(newForm);
+      this.guardar();
       this.openSnackBar('Equipo Guardado', 99);
     }
   }
-
-  guardar( newForm ) {
-    this._general_services.saveEquipo(this.equipo, this.getToken().token).subscribe(
+  guardar() {
+    this.generalService.saveEquipo(this.equipo, this.getToken().token).subscribe(
       result => {
         try {
           if (result.estado) {
@@ -151,5 +164,4 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
         }
       });
   }
-  
 }

@@ -6,44 +6,34 @@
       <tr>
         <td>
           <mat-form-field>
-            <mat-label>Tipo</mat-label>
-            <mat-select [(ngModel)]="equipo.tipo" name="tipo" required>
-              <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
-                {{tipo.viewValue}}
+            <mat-label>Productos</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option (click)="cambiarIdProd(option.id_catalogo)" *ngFor="let option of productos" [value]="option.id_catalogo">
+                  {{option.producto}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input type="text" 
-                  matInput 
-                  placeholder="Producto" 
-                  formControlName="Producto" 
-                  required
-                  [matAutocomplete]="autoGroup">
-            <mat-autocomplete #autoGroup="matAutocomplete">
-              <mat-optgroup *ngFor="let producto of productos" [label]="producto.letter">
-                <mat-option *ngFor="let name of producto.names" [value]="name">
-                  {{name}}
-                </mat-option>
-              </mat-optgroup>
-            </mat-autocomplete>
           </mat-form-field>          
         </td>
       </tr>
       <tr>
         <td>
           <mat-form-field>
-            <input matInput placeholder="Modelo" name="modelo" #c_username="ngModel" [(ngModel)]="equipo.modelo"
-              minlength="2" maxlength="100" required />
-            <mat-hint class="error" *ngIf="equipo.modelo.length2">Campo Obligatorio *</mat-hint>
+            <mat-label>Modelo</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option (click)="cambiarIdProd(option.id_catalogo)" *ngFor="let option of productos" [value]="option.id_catalogo">
+                  {{option.modelo}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field>
-            <input matInput placeholder="Marca" name="marca" #c_username="ngModel" [(ngModel)]="equipo.marca"
-              type='text' required />
+            <mat-label>Marca</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option (click)="cambiarIdProd(option.id_catalogo)" *ngFor="let option of productos" [value]="option.id_catalogo">
+                  {{option.marca}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </td>
       </tr>
@@ -59,18 +49,18 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Ubicación" aria-label="Number" matInput [formControl]="myControl"
+      <input type="text" placeholder="Laboratorio*" aria-label="Number" matInput [formControl]="myControl"
         [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.viewValue">
-          {{ubicacion.viewValue}}
+        <mat-option (click)="cambiarIdLab(option)" *ngFor="let option of laboratorios" [value]= "option">
+          LAB 30{{option}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
 
-    <button mat-button type="submit" cdkFocusInitial [disabled]="!newForm.form.valid">
+    <button mat-button type="submit" >
       <mat-icon>save</mat-icon>
       <span>Guardar</span>
     </button>
