@@ -147,6 +147,16 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
     this.idMotivo = idmotivo;
   }
 
+  AlertaGuardadoElemento() {
+    // Preguntamos si desea Guardar el Registro
+    const mensaje = confirm('¿Te gustaría Guardar la Incidencia?');
+    // Detectamos si el usuario acepto el mensaje
+    if (mensaje) {
+      this.guardarIncidencia();
+      this.openSnackBar('Incidencia Guardada', 99);
+    }
+  }
+
   guardarIncidencia() {
     const req = {
       id_docente: this.idDoc,

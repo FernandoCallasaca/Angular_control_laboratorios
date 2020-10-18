@@ -19,6 +19,7 @@ export interface Incidencia {
   asignado: number;
   estado: string;
   soportetecnico: string;
+  descripcion: string;
 }
 
 @Component({

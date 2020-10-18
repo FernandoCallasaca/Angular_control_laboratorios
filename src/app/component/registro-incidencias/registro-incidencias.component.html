@@ -68,7 +68,7 @@
             <div style="align-items: end;" class="cabecera">
                 <mat-form-field appearance="" style="width: 45%;" >
                     <mat-label>Motivos</mat-label>
-                    <mat-select [disabled]="disableSelect.value">
+                    <mat-select [disabled]="disableSelect.value" required>
                         <mat-option (click)="cambiarIdMotivo(option.id_motivo)" *ngFor="let option of motivos" [value]="option.id_motivo">
                             {{option.nombre}}
                         </mat-option>
@@ -81,8 +81,8 @@
                 </mat-form-field>
             </div>
             <br>
-            <div style="text-align: center;">
-                <button mat-flat-button color="primary" (click)="guardarIncidencia()">Guardar</button>
+            <div style="text-align: center;" mat-dialog-actions>
+                <button mat-flat-button color="primary" (click)="AlertaGuardadoElemento()" cdkFocusInitial>Guardar</button>
             </div>
         </div>
     </form>
