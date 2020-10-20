@@ -20,6 +20,7 @@ import { SoportetecnicoComponent } from './component/soportetecnico/soportetecni
 import { EquipoComponent } from './component/equipo/equipo.component';
 import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
 import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
+import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
 
 //Array de rutas
 const appRoutes:Routes=[
@@ -43,7 +44,7 @@ const appRoutes:Routes=[
     {path: 'equipo', component: EquipoComponent},
     {path: 'registroincidencias', component: RegistroIncidenciasComponent},
     {path: 'controlincidencias', component: ControlIncidenciasComponent},
-
+    {path: 'asignarincidencia', component: AsignarIncidenciasComponent},
 
 
     {path: '**', component: LoginComponent}

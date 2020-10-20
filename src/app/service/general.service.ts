@@ -137,6 +137,14 @@ export class GeneralService {
         });
         return this._http.post(this.url + 'general/getincidencias', {}, { headers: reqHeader });
     }
+    saveAsignacion(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/saveasignacion', data, { headers: reqHeader });
+    }
 
 
 

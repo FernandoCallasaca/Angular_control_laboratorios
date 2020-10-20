@@ -3,7 +3,7 @@
         <div class="contenedorBody">
             <h2>Registro de Incidencias</h2>
             <div class="cabecera">
-                <mat-label>Codigo del Docente:</mat-label>
+                <mat-label>Código del Docente:</mat-label>
                 <mat-form-field class="example-fifty-width">
                     <input type="text"
                         placeholder="Ingrese su código"
@@ -44,7 +44,7 @@
                 </tr>
             </table>
             <div class="cabecera">
-                <mat-label>Número de Laboratorio:</mat-label>
+                <mat-label>Seleccione Ambiente:</mat-label>
                 <mat-form-field appearance="">
                     <mat-label>Elije un laboratorio</mat-label>
                     <mat-select [disabled]="disableSelect.value">
@@ -59,7 +59,7 @@
                     <mat-label>Elije un Equipo de el Laboratorio</mat-label>
                     <mat-select [disabled]="disableSelect.value">
                         <mat-option (click)="selectEquipo(option)" *ngFor="let option of eqLab" [value]="option">
-                            Eq. {{option}}
+                            PC0{{option}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

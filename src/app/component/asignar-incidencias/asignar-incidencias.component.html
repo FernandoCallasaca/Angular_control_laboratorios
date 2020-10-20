@@ -1,0 +1,70 @@
+<app-menu>
+    <div class="contenedorBody">
+        <h2>Asignar Incidencias</h2>
+        <div class="cabecera">
+            <mat-form-field appearance="" style="width: 45%;" >
+                <mat-label>Elegir Personal de Soporte Técnico</mat-label>
+                <mat-select [disabled]="disableSelect.value" required>
+                    <mat-option (click)="cambiarIdSoporteTecnico(option.id_soportetecnico)" *ngFor="let option of soportesTecnicos" [value]="option.id_soportetecnico">
+                        {{option.nombres + ' ' + option.apellidos}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <br>
+        <div>
+            <button mat-button color="primary" (click)="elementosSeleccionados()">ASIGNAR</button>
+        </div>
+        <br>
+    
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="fecha">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="laboratorio">
+              <th mat-header-cell *matHeaderCellDef> Laboratorio </th>
+              <td mat-cell *matCellDef="let element"> {{element.laboratorio}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="equipo">
+              <th mat-header-cell *matHeaderCellDef> Equipo </th>
+              <td mat-cell *matCellDef="let element"> {{element.equipo}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="motivo">
+              <th mat-header-cell *matHeaderCellDef> Motivo </th>
+              <td mat-cell *matCellDef="let element"> {{element.motivo}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+        </table>
+    </div>
+</app-menu>

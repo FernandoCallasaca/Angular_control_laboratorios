@@ -1,26 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { GeneralService } from './../../service/general.service';
 import { BaseComponent } from './../base/base.component';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AppSettings } from 'src/app/common/appsettings';
-
-export interface Incidencia {
-  id_incidencia: number;
-  id_docente: number;
-  docente: string;
-  laboratorio: string;
-  equipo: string;
-  fecha: string;
-  motivo: string;
-  asignado: number;
-  estado: string;
-  soportetecnico: string;
-  descripcion: string;
-}
+import { VwIncidencia } from './../../interface/vwincidencia.interface';
 
 @Component({
   selector: 'app-control-incidencias',
@@ -41,14 +28,15 @@ export interface Incidencia {
 export class ControlIncidenciasComponent extends BaseComponent implements OnInit {
 
   incidencias = [];
-  incidendiasSinAsignar: Incidencia[] = [];
-  incidenciasAsigandas: Incidencia[] = [];
+  incidendiasSinAsignar: VwIncidencia[] = [];
+  incidenciasAsigandas: VwIncidencia[] = [];
 
   dataSource = this.incidendiasSinAsignar;
   dataSource1 = this.incidenciasAsigandas;
 
   columnsToDisplay = ['id_incidencia', 'fecha', 'laboratorio', 'equipo'];
-  expandedElement: Incidencia | null;
+  columnsToDisplay1 = ['id_incidencia', 'fecha', 'laboratorio', 'equipo', 'soportetecnico'];
+  expandedElement: VwIncidencia | null;
 
   constructor(
     public snackBar: MatSnackBar,

@@ -154,6 +154,11 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
     if (mensaje) {
       this.guardarIncidencia();
       this.openSnackBar('Incidencia Guardada', 99);
+      this.idDoc = -1;
+      this.idLab = -1;
+      this.idEquipo = -1;
+      this.idMotivo = -1;
+      this.router.navigate(['controlincidencias']);
     }
   }
 
@@ -179,10 +184,5 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
           this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
         }
       });
-    console.log(`Docente: ${this.idDoc + 1}`);
-    console.log(`Laboratorio: ${this.idLab}`);
-    console.log(`Equipo: ${this.idEquipo}`);
-    console.log(`Motivo: ${this.idMotivo}`);
-    console.log(`Descripción: ${this.descripcion}`);
   }
 }

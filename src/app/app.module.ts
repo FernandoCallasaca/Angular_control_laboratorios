@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseComponent } from './component/base/base.component';
 import { LoginComponent } from './component/seguridad/login/login.component';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -57,6 +58,7 @@ import { EquipoeditarComponent } from './component/equipoeditar/equipoeditar.com
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
 import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
+import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
 
 @NgModule({
   declarations: [
@@ -84,11 +86,13 @@ import { ControlIncidenciasComponent } from './component/control-incidencias/con
     EquipoeditarComponent,
     RegistroIncidenciasComponent,
     ControlIncidenciasComponent,
+    AsignarIncidenciasComponent,
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCheckboxModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     BrowserModule,
