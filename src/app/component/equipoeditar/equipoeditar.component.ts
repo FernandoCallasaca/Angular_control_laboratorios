@@ -141,6 +141,11 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     }
   }
   guardar() {
+    const req = {
+      id_catalogo: this.idProd,
+      estado: this.estados,
+      ubicacion: this.idLab
+    };
     this.generalService.saveEquipo(this.equipo, this.getToken().token).subscribe(
       result => {
         try {
