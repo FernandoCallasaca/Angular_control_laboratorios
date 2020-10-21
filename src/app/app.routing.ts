@@ -24,7 +24,7 @@ import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asi
 
 //Array de rutas
 const appRoutes:Routes=[
-    {path:'',component:DocenteComponent},
+    {path:'',component:LoginComponent},
     {path:'login',component:LoginComponent},
     {path:'home',component:HomeComponent},
     {path:'resumen',component:ResumenComponent},

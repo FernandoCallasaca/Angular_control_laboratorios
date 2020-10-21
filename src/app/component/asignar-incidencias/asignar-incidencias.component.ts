@@ -25,6 +25,8 @@ export class AsignarIncidenciasComponent extends BaseComponent implements OnInit
 
   disableSelect = new FormControl(false);
 
+  activarBoton = true;
+
   idSP = -1;
   soportesTecnicos = [];
 
@@ -113,6 +115,7 @@ export class AsignarIncidenciasComponent extends BaseComponent implements OnInit
   }
 
   cambiarIdSoporteTecnico(id: number): void {
+    this.activarBoton = false;
     this.idSP = id;
     this.selection.clear();
   }

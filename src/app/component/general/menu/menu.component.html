@@ -6,35 +6,38 @@
         <mat-nav-list>
 
             <a mat-list-item [routerLink]="['/docente']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>contacts</mat-icon>
                 <span>Docente</span>
             </a>
             <a mat-list-item [routerLink]="['/catalogo']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>view_list</mat-icon>
                 <span>Catálogo</span>
             </a>
             <a mat-list-item [routerLink]="['/usuario']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>person</mat-icon>
                 <span>Usuario</span>
             </a>
             <a mat-list-item [routerLink]="['/soportetecnico']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>supervisor_account</mat-icon>
                 <span>Soporte Tecnico</span>
             </a>
             <a mat-list-item [routerLink]="['/equipo']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>computer</mat-icon>
                 <span>Equipo</span>
             </a>
+
+            <br>
+
             <a mat-list-item [routerLink]="['/registroincidencias']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>report_problem</mat-icon>
                 <span>Registro de Incidencias</span>
             </a>
             <a mat-list-item [routerLink]="['/controlincidencias']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>control_camera</mat-icon>
                 <span>Control de Incidencias</span>
             </a>
             <a mat-list-item [routerLink]="['/asignarincidencia']">
-                <mat-icon>timeline</mat-icon>
+                <mat-icon>check_circle</mat-icon>
                 <span>Asignar Incidencias</span>
             </a>
 
@@ -62,7 +65,7 @@
             </mat-menu>
         </mat-toolbar>
         <ng-content>
-            <!--Aquí va el contenido de los formularios-->
+            
         </ng-content>
     </mat-sidenav-content>
 </mat-sidenav-container>
