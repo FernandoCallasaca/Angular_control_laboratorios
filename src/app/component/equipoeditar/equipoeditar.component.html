@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Edición {{equipo.producto}}</h1>
 <form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
   <div mat-dialog-content class="contenedor">
-
+    
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
@@ -12,29 +12,23 @@
                   {{option.producto}}
               </mat-option>
             </mat-select>
-          </mat-form-field>          
-        </td>
+          </mat-form-field>       
+        </td>      
       </tr>
       <tr>
-        <td>
-          <mat-form-field>
-            <mat-label>Modelo</mat-label>
-            <mat-select [disabled]="disableSelect.value">
-              <mat-option (click)="cambiarIdProd(option.id_catalogo)" *ngFor="let option of productos" [value]="option.id_catalogo">
-                  {{option.modelo}}
-              </mat-option>
-            </mat-select>
+        <td style="padding: 20px;">
+          <mat-form-field class="example-full-width">
+              <mat-label *ngIf="idProd >= 0">{{ productos[idProd].modelo }}</mat-label>
+              <mat-label *ngIf="idProd === -1">Modelo</mat-label>
+              <input matInput [disabled]="true">
           </mat-form-field>
         </td>
-        <td>
-          <mat-form-field>
-            <mat-label>Marca</mat-label>
-            <mat-select [disabled]="disableSelect.value">
-              <mat-option (click)="cambiarIdProd(option.id_catalogo)" *ngFor="let option of productos" [value]="option.id_catalogo">
-                  {{option.marca}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <td style="padding: 20px;">
+          <mat-form-field class="example-full-width">
+              <mat-label *ngIf="idProd >= 0">{{ productos[idProd].marca }}</mat-label>
+              <mat-label *ngIf="idProd === -1">Marca</mat-label>
+              <input matInput [disabled]="true">
+          </mat-form-field>     
         </td>
       </tr>
     </table>
@@ -53,7 +47,7 @@
         [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option (click)="cambiarIdLab(option)" *ngFor="let option of laboratorios" [value]= "option">
-          LAB 30{{option}}
+          {{option}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

@@ -59,6 +59,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { RegistroIncidenciasComponent } from './component/registro-incidencias/registro-incidencias.component';
 import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
 import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
+import { RedactarInformeComponent } from './component/redactar-informe/redactar-informe.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asi
     RegistroIncidenciasComponent,
     ControlIncidenciasComponent,
     AsignarIncidenciasComponent,
+    RedactarInformeComponent,
   ],
   imports: [
     FormsModule,

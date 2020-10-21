@@ -21,4 +21,8 @@
   .example-full-width {
     width: 100%;
   }
+  .example-eighty-width {
+    margin: 15px;
+    width: 100%;
+}
   

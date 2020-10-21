@@ -31,6 +31,7 @@ import {
 } from '../../service/general.service';
 import { FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-equipoeditar',
@@ -44,11 +45,13 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   equipos = [];
+
   idLab = -1;
-  laboratorios = [];
+  ubicacion = [];
 
   idProd = -1;
   productos = [];
+  idproductos =[];
   disableSelect = new FormControl(false);
 
   equipo: Equipos;
@@ -91,13 +94,48 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     }
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value;
+
+    return this.idproductos.filter(option => option.toString().includes(filterValue));
+  }
+
   getProductos() {
     const req1 = { };
-    this.generalService.getCatalogo (this.getToken().token).subscribe(
+    this.generalService.getEquipo(this.getToken().token).subscribe(
       result => {
         if (result.estado) {
           this.productos = result.data;
-          console.log(this.productos);
+          console.log(this.productos);  
+          this.idproductos = this.productos.map( equipo => equipo.producto).sort();
+          this.filteredOptions = this.myControl.valueChanges
+            .pipe(
+              startWith(''),
+              map(value => this._filter(value))
+            );
+        } else {
+          this.openSnackBar(result.mensaje, 99);
+        }
+      }, error => {
+        try {
+          this.openSnackBar(error.error.Detail, error.error.StatusCode);
+        } catch (error) {
+          this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
+        }
+      });
+  }
+  
+  
+  getLaboratorios() {
+    const req1 = { };
+    this.generalService.getEquipo(this.getToken().token).subscribe(
+      result => {
+        if (result.estado) {
+          this.equipos = result.data;
+          const distinto = (valor, indice, self) => {
+            return self.indexOf(valor) === indice;
+          };
+          this.ubicacion = this.equipos.map(equipo => equipo.ubicacion).filter(distinto).sort();
         } else {
           this.openSnackBar(result.mensaje, 99);
         }
@@ -110,27 +148,6 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
       });
   }
 
-  getLaboratorios() {
-    const req1 = { };
-    this.generalService.getEquipo(this.getToken().token).subscribe(
-      result => {
-        if (result.estado) {
-          this.equipos = result.data;
-          const distinto = (valor, indice, self) => {
-            return self.indexOf(valor) === indice;
-          };
-          this.laboratorios = this.equipos.map(equipo => equipo.ubicacion).filter(distinto).sort();
-        } else {
-          this.openSnackBar(result.mensaje, 99);
-        }
-      }, error => {
-        try {
-          this.openSnackBar(error.error.Detail, error.error.StatusCode);
-        } catch (error) {
-          this.openSnackBar(AppSettings.SERVICE_NO_CONECT_SERVER, 99);
-        }
-      });
-  }
   AlertaGuardadoElemento( ) {
     // Preguntamos si desea Guardar el Registro
     const mensaje = confirm('¿Te gustaría Guardar el Equipo?');
@@ -138,6 +155,7 @@ export class EquipoeditarComponent extends BaseComponent implements OnInit {
     if (mensaje) {
       this.guardar();
       this.openSnackBar('Equipo Guardado', 99);
+      this.idLab = -1;
     }
   }
   guardar() {
