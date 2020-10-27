@@ -120,7 +120,8 @@ export class AsignarIncidenciasComponent extends BaseComponent implements OnInit
     this.selection.clear();
   }
 
-  elementosSeleccionados() {
+  elementosSeleccionados(event: Event) {
+    event.preventDefault();
     console.log('Personal de Soporte Técnico');
     console.log(this.idSP);
     console.log('Estos son los elementos seleccionados');
@@ -135,8 +136,8 @@ export class AsignarIncidenciasComponent extends BaseComponent implements OnInit
       };
       this.saveAsignacion(req);
     }
-    this.getIncidenciasSinAsignar();
     this.selection.clear();
+    this.getIncidenciasSinAsignar();
   }
 
   saveAsignacion( req ) {

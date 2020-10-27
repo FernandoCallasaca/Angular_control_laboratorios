@@ -1,3 +1,63 @@
 <app-menu>
-    <p>Aquí haremos la redacción de un informe</p>
+  <form [formGroup]="form" (ngSubmit)="saveProducts($event)">
+    <mat-card>
+      <mat-card-header> Producto </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Id"
+                type="text"
+                formControlName="id"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Title"
+                type="text"
+                formControlName="title"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Price"
+                type="number"
+                formControlName="price"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <textarea
+                matInput
+                placeholder="Description"
+                formControlName="description"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [disabled]="form.invalid" mat-raised-button type="submit">
+          Guardar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
 </app-menu>
