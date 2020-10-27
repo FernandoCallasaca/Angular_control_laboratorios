@@ -1,5 +1,85 @@
 <app-menu>
   <form [formGroup]="form" (ngSubmit)="saveProducts($event)">
+    <div class="contenedorBody">
+      <h2>Informe de Incidencias</h2>
+      <div class="cabecera">
+        <mat-label>Código del Personal Soporte Técnico:</mat-label>
+        <mat-form-field class="example-fifty-width">
+          <input
+            type="text"
+            placeholder="Ingrese su código"
+            aria-label="Number"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              (click)="cambiarIdST(option)"
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <table class="example-eighty-width" cellspacing="0">
+        <tr>
+          <td style="padding: 20px">
+            <mat-form-field class="example-full-width">
+              <mat-label *ngIf="idST >= 0">{{
+                soportestecnicos[idST].nombres
+              }}</mat-label>
+              <mat-label *ngIf="idST === -1">Nombres</mat-label>
+              <input matInput [disabled]="true" />
+            </mat-form-field>
+          </td>
+          <td style="padding: 20px">
+            <mat-form-field class="example-full-width">
+              <mat-label *ngIf="idST >= 0">{{
+                soportestecnicos[idST].apellidos
+              }}</mat-label>
+              <mat-label *ngIf="idST === -1">Apellidos</mat-label>
+              <input matInput [disabled]="true" />
+            </mat-form-field>
+          </td>
+          <td style="padding: 20px">
+            <mat-form-field class="example-full-width">
+              <mat-label *ngIf="idST >= 0">{{
+                soportestecnicos[idST].dni
+              }}</mat-label>
+              <mat-label *ngIf="idST === -1">DNI</mat-label>
+              <input matInput [disabled]="true" />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <div class="cabecera">
+        <mat-label>Incidencia:</mat-label>
+          <mat-form-field appearance="">
+              <mat-label>Elije una Incidencia</mat-label>
+              <mat-select [disabled]="disableSelect.value">
+                  <mat-option (click)="selectIncidencia(option)" *ngFor="let option of idsIncidenciasPend" [value]="option">
+                      Inc {{option}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div class="cabecera">
+        <div>
+          <p>¿Problema Software?</p>
+          <mat-slide-toggle (click)="cambiarBoolS(!boolS)"></mat-slide-toggle>
+        </div>
+        <div>
+          <p>¿Problema Hardware?</p>
+          <mat-slide-toggle (click)="cambiarBoolH(!boolH)"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+
     <mat-card>
       <mat-card-header> Producto </mat-card-header>
       <mat-card-content>

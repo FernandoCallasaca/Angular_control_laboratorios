@@ -35,7 +35,7 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
   idMotivo = -1;
   motivos = [];
 
-  descripcion: String = '';
+  descripcion = '';
 
 
   constructor(

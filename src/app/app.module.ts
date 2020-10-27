@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseComponent } from './component/base/base.component';
 import { LoginComponent } from './component/seguridad/login/login.component';
 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
@@ -95,6 +96,7 @@ import { RedactarInformeComponent } from './component/redactar-informe/redactar-
     ReactiveFormsModule,
     HttpClientModule,
     MatCheckboxModule,
+    MatSlideToggleModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     BrowserModule,
