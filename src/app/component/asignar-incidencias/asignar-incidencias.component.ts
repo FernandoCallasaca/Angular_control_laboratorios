@@ -138,6 +138,7 @@ export class AsignarIncidenciasComponent extends BaseComponent implements OnInit
     }
     this.selection.clear();
     this.getIncidenciasSinAsignar();
+    this.router.navigate(['controlincidencias']);
   }
 
   saveAsignacion( req ) {

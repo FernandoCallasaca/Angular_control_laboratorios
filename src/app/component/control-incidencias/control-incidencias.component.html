@@ -4,7 +4,10 @@
         <mat-step>
             <!-- Colocamos el nombre del apartado -->
             <ng-template matStepLabel>Insidencias sin Asignar</ng-template>
-            
+
+            <a [ngStyle]="{'margin-bottom':'10px'}" routerLink="/asignarincidencia" mat-raised-button color="accent">Asignar Incidencias</a>
+            <br>
+
             <!-- Creamos una tabla con las incidencias -->
             <table mat-table
                 [dataSource]="dataSource" multiTemplateDataRows
@@ -48,7 +51,7 @@
 
         <mat-step>
             <ng-template matStepLabel>Incidencias Asignadas</ng-template>
-            
+
             <!-- Creamos una tabla con las incidencias -->
             <table mat-table
                 [dataSource]="dataSource1" multiTemplateDataRows

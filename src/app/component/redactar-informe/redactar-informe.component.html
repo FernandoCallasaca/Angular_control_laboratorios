@@ -78,66 +78,70 @@
           <mat-slide-toggle (click)="cambiarBoolH(!boolH)"></mat-slide-toggle>
         </div>
       </div>
+
+      <!-- Sección que aparecen de acuerdo a la elección de arriba  -->
+      <div class="cabecera">
+        <!-- Este div aparece si elije software -->
+        <div *ngIf="boolS" class="section-boolS-boolH">
+          <span><u>Componente Software</u></span>
+          <div class="section-boolS-boolH-group">
+            <mat-label>Defectuoso:</mat-label>
+            <mat-form-field class="selection-form-field" appearance="">
+                <mat-label>Elije el componente defectuoso</mat-label>
+                <mat-select [disabled]="disableSelect.value">
+                    <mat-option (click)="selectIncidencia(option)" *ngFor="let option of idsIncidenciasPend" [value]="option">
+                        Inc {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="section-boolS-boolH-group">
+            <mat-label>Nuevo:</mat-label>
+            <mat-form-field class="selection-form-field" appearance="">
+                <mat-label>Elije el componente nuevo</mat-label>
+                <mat-select [disabled]="disableSelect.value">
+                    <mat-option (click)="selectIncidencia(option)" *ngFor="let option of idsIncidenciasPend" [value]="option">
+                        Inc {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Este div aparece si elije hardware -->
+        <div *ngIf="boolH" class="section-boolS-boolH">
+          <span><u>Componente Hardware</u></span>
+          <div class="section-boolS-boolH-group">
+            <mat-label>Defectuoso:</mat-label>
+            <mat-form-field class="selection-form-field" appearance="">
+                <mat-label>Elije el componente dectuoso</mat-label>
+                <mat-select [disabled]="disableSelect.value">
+                    <mat-option (click)="selectIncidencia(option)" *ngFor="let option of idsIncidenciasPend" [value]="option">
+                        Inc {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="section-boolS-boolH-group">
+            <mat-label>Nuevo:</mat-label>
+            <mat-form-field class="selection-form-field" appearance="">
+                <mat-label>Elije el componente nuevo</mat-label>
+                <mat-select [disabled]="disableSelect.value">
+                    <mat-option (click)="selectIncidencia(option)" *ngFor="let option of idsIncidenciasPend" [value]="option">
+                        Inc {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <mat-card>
-      <mat-card-header> Producto </mat-card-header>
-      <mat-card-content>
-        <div class="row">
-          <div class="col-xs">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Id"
-                type="text"
-                formControlName="id"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Title"
-                type="text"
-                formControlName="title"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Price"
-                type="number"
-                formControlName="price"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs">
-            <mat-form-field>
-              <textarea
-                matInput
-                placeholder="Description"
-                formControlName="description"
-                cols="30"
-                rows="10"
-              ></textarea>
-            </mat-form-field>
-          </div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button [disabled]="form.invalid" mat-raised-button type="submit">
-          Guardar
-        </button>
-      </mat-card-actions>
-    </mat-card>
+    <a [ngStyle]="{'margin-bottom':'10px', 'align-content': 'center','margin': '1% 50%'}"
+    routerLink="/asignarincidencia" mat-raised-button color="primary">GUARDAR</a>
+
   </form>
 </app-menu>
