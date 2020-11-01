@@ -53,16 +53,6 @@
         </mat-form-field>
     </td>
     <td>
-      <mat-form-field>
-        <mat-label>Régimen</mat-label>
-        <mat-select [(ngModel)]="docente.regimen" name="regimen" required>
-          <mat-option *ngFor="let regimen of regimenes" [value]="regimen.value">
-            {{regimen.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </td>
-    <td>
 
       <mat-form-field>
         <mat-label>Categoría</mat-label>
@@ -73,6 +63,16 @@
         </mat-select>
       </mat-form-field>
 
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>Régimen</mat-label>
+        <mat-select [(ngModel)]="docente.regimen" name="regimen" required>
+          <mat-option *ngFor="let regimen of regimenes" [value]="regimen.value">
+            {{regimen.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </td>
     </tr></table>  
 

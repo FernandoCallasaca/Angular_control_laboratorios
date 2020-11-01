@@ -66,6 +66,7 @@ export class DocenteeditarComponent extends BaseComponent implements OnInit {
     { value: 'principal', viewValue: 'Principal' },
     { value: 'auxiliar', viewValue: 'Auxiliar' },
     { value: 'asociado', viewValue: 'Asociado' },
+    { value: 'jefe de practica', viewValue: 'Jefe de Práctica' },
   ];
 
   contratado = [
@@ -75,12 +76,14 @@ export class DocenteeditarComponent extends BaseComponent implements OnInit {
     { value: 'B1', viewValue: 'B1' },
     { value: 'B2', viewValue: 'B2' },
     { value: 'B3', viewValue: 'B3' },
+    { value: 'jefe de practica', viewValue: 'Jefe de Práctica' },
   ];
 
   nombreCategoria = [
     { value: 'principal', viewValue: 'Principal' },
     { value: 'auxiliar', viewValue: 'Auxiliar' },
     { value: 'asociado', viewValue: 'Asociado' },
+    { value: 'jefe de practica', viewValue: 'Jefe de Práctica' },
     { value: 'A1', viewValue: 'A1' },
     { value: 'A2', viewValue: 'A2' },
     { value: 'A3', viewValue: 'A3' },

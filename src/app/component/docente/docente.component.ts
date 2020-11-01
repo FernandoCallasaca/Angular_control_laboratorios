@@ -54,7 +54,7 @@ export class DocenteComponent extends BaseComponent implements OnInit {
 
   textfilter = '';
 
-  displayedColumns: string[] = ['editar', 'nombres', 'apellidos', 'condicion', 'regimen', 'categoria', 'eliminar'];
+  displayedColumns: string[] = ['editar', 'nombres', 'apellidos', 'condicion', 'categoria', 'regimen', 'eliminar'];
 
 
   public tablaDocente: MatTableDataSource < any > ;
