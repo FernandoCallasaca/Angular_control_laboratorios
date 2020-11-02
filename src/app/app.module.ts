@@ -61,6 +61,7 @@ import { RegistroIncidenciasComponent } from './component/registro-incidencias/r
 import { ControlIncidenciasComponent } from './component/control-incidencias/control-incidencias.component';
 import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
 import { RedactarInformeComponent } from './component/redactar-informe/redactar-informe.component';
+import { AsignarcomponenteComponent } from './component/asignarcomponente/asignarcomponente.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { RedactarInformeComponent } from './component/redactar-informe/redactar-
     ControlIncidenciasComponent,
     AsignarIncidenciasComponent,
     RedactarInformeComponent,
+    AsignarcomponenteComponent,
   ],
   imports: [
     FormsModule,
