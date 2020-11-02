@@ -1,1 +1,51 @@
-<p>soportetecnicoeditar works!</p>
+<h1 mat-dialog-title>Edición Soporte Técnico {{soportetecnico.nombres}}</h1>
+<form class="example-container" #newForm="ngForm" (ngSubmit)="AlertaGuardadoElemento(newForm)">
+    <div mat-dialog-content class="contenedor">
+
+        <mat-form-field>
+        <input matInput placeholder="Nombre" name="nombres" #c_username="ngModel" [(ngModel)]="soportetecnico.nombres"
+            minlength="2" maxlength="100" required />
+        <mat-hint class="error" *ngIf="soportetecnico.nombres.length<2">Debe agregar algun valor</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+        <input matInput placeholder="Apellidos" name="apellidos" #c_username="ngModel"
+            [(ngModel)]="soportetecnico.apellidos" type='text' required/>
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+            <mat-form-field>
+            <mat-label>DNI</mat-label>
+            <input matInput #dni placeholder="Ex. 00000000" name="dni" #c_username="ngModel"
+                [(ngModel)]="soportetecnico.dni" type='number' required maxlength="8"/>
+                <mat-hint class="error" *ngIf="soportetecnico.dni.length > 8">El DNI tiene que ser igual a 8</mat-hint>
+                <mat-hint align="end">{{dni.value.length}} / 8</mat-hint>
+            </mat-form-field>
+            </td>
+            <td>
+            <mat-form-field class="example-full-width">
+                <mat-label>Teléfono</mat-label>
+                <span matPrefix>+51 &nbsp;</span>
+                <input type="number" matInput placeholder="555-555-1234" name="telefono" #c_username="ngModel"
+                [(ngModel)]="soportetecnico.telefono" required>
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+            </td>
+        </tr></table>
+
+        <mat-form-field class="example-full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput placeholder="Ex. pat@example.com" name="correo" c_username="ngModel"
+        [(ngModel)]="soportetecnico.correo" required type="email">
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions>
+
+        <button color="primary" mat-button type="submit" cdkFocusInitial [disabled]="!newForm.form.valid">
+        <mat-icon>save</mat-icon>
+        <span>Guardar</span>
+        </button>
+    </div>
+</form>
