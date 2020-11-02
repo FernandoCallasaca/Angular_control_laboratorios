@@ -39,7 +39,7 @@ import {
 })
 export class SoportetecnicoeditarComponent extends BaseComponent implements OnInit {
 
-  soportestecnicos=[];
+  soportestecnicos = [];
 
   soportetecnico: SoporteTecnicos;
 
@@ -83,6 +83,7 @@ export class SoportetecnicoeditarComponent extends BaseComponent implements OnIn
       this.openSnackBar('Soporte Técnico Guardado', 99);
     }
   }
+
   guardar( newForm ) {
     this._general_services.saveDocente(this.soportetecnico, this.getToken().token).subscribe(
       result => {
@@ -107,6 +108,4 @@ export class SoportetecnicoeditarComponent extends BaseComponent implements OnIn
         }
       });
   }
-
-
 }

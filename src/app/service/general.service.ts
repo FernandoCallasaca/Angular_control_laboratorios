@@ -152,7 +152,13 @@ export class GeneralService {
         console.log(data)
         return this._http.post(this.url + 'general/saveasignacion', data, { headers: reqHeader });
     }
-
+    getVwComponentes(token): Observable<any> {
+      var reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      });
+      return this._http.post(this.url + 'general/getvwcomponentes', {}, { headers: reqHeader });
+  }
 
 
 
@@ -429,7 +435,7 @@ export class GeneralService {
         });
         return this._http.post(this.url + 'general/imprimirreparto', req, { headers: reqHeader });
     }
-    
+
     deleteUsuarioUbigeo(data, token): Observable<any> {
         var reqHeader = new HttpHeaders({
             'Content-Type': 'application/json',
