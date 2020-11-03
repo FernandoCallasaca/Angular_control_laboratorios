@@ -1,5 +1,5 @@
 <app-menu>
-  <form [formGroup]="form" (ngSubmit)="saveProducts($event)">
+  <form>
     <div class="contenedorBody">
       <h2>Informe de Incidencias</h2>
       <div class="cabecera">
@@ -46,7 +46,7 @@
             <mat-form-field class="selection-form-field" appearance="">
                 <mat-label>Elije el Componente Software</mat-label>
                 <mat-select [disabled]="disableSelect.value">
-                    <mat-option *ngFor="let option of catalogosST" [value]="option.id_catalogo">
+                    <mat-option (click)="selectNewST(option.id_catalogo)" *ngFor="let option of catalogosST" [value]="option.id_catalogo">
                       {{option.producto}} - {{option.modelo}} - {{option.marca}}
                     </mat-option>
                 </mat-select>
@@ -74,19 +74,41 @@
             <mat-form-field class="selection-form-field" appearance="">
                 <mat-label>Elije el componente nuevo</mat-label>
                 <mat-select [disabled]="disableSelect.value">
-                    <mat-option *ngFor="let option of catalogosHWProducto" [value]="option.id_catalogo">
+                    <mat-option (click)="selectNewHW(option.id_catalogo)" *ngFor="let option of catalogosHWProducto" [value]="option.id_catalogo">
                       {{option.producto}} - {{option.modelo}} - {{option.marca}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
           </div>
         </div>
+      </div><br>
 
+      <div style="align-items: end;" class="cabecera">
+        <mat-form-field class="tabla example-full-width mat-elevation-z1">
+            <mat-label>Escriba una descripcion sobre el informe</mat-label>
+            <textarea name="descripcion" [(ngModel)]="descripcion" style="padding: 0px;" rows="8" matInput placeholder="En esta incidencia resuelta encontré..."></textarea>
+        </mat-form-field>
+      </div><br>
+
+      <div class="cabecera" style="justify-content: left;">
+        <mat-radio-group aria-label="Selecciona una opcion">
+          <mat-radio-button (click)="dadoDeBaja(1)" value="1">Equipo Normal</mat-radio-button>
+          <mat-radio-button (click)="dadoDeBaja(2)" value="2">Equipo dado de baja</mat-radio-button>
+        </mat-radio-group>
       </div>
+
+      <mat-form-field *ngIf="dadoBaja===2" class="example-full-width">
+        <mat-label>Motivo por dar de Baja</mat-label>
+        <textarea name="motivoBaja" [(ngModel)]="motivoBaja" matInput placeholder="Nunca prendió el equipo"></textarea>
+      </mat-form-field>
+
+
+
+
     </div>
 
-    <a [ngStyle]="{'margin-bottom':'10px', 'align-content': 'center','margin': '1% 50%'}"
-    routerLink="/asignarincidencia" mat-raised-button color="primary">GUARDAR</a>
+    <a (click)="saveAll()" [ngStyle]="{'margin-bottom':'10px', 'align-content': 'center','margin': '1% 50%'}"
+    mat-raised-button color="primary">GUARDAR</a>
 
   </form>
 </app-menu>

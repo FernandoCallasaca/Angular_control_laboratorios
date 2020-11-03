@@ -42,6 +42,16 @@ export class RedactarInformeComponent extends BaseComponent implements OnInit {
   catalogosST = []; // Aquí tendremos los catalogos de tipo software
   catalogosHWProducto = []; // Aquí tendremos los catalogos de tipo harware y con un determinado producto
 
+  idPastComponentHW = -1;
+
+  idNewCatalogoST = -1; // Aquí agregaremos el id nuevo del catalogo software
+  idNewCatalogoHW = -1; // Aquí agregaremos el id nuevo del catalogo hardware
+
+  descripcion = '';
+
+  dadoBaja = 1;
+  motivoBaja = '';
+
   form: FormGroup;
 
   constructor(
@@ -139,7 +149,8 @@ export class RedactarInformeComponent extends BaseComponent implements OnInit {
   selectIncidencia(idincidencia: number) {
     this.idIncidencia = idincidencia;
     console.log(`Incidencia: ${this.idIncidencia} `);
-    this.idEquipo = this.vwincidencias.filter(incidencia => incidencia.id_incidencia === idincidencia).map(inc => inc.id_equipo)[0];
+    this.idEquipo = this.vwincidencias.filter(incidencia => incidencia.id_incidencia === idincidencia)
+                    .map(inc => inc.id_equipo)[0];
     console.log(`Equipo de la Incidencia: ${this.idEquipo}`);
     this.componentesST = this.vwcomponentes.filter(comp => comp.id_equipo === this.idEquipo && comp.tipo === 'Software');
     this.componentesHW = this.vwcomponentes.filter(comp => comp.id_equipo === this.idEquipo && comp.tipo === 'Hardware');
@@ -190,6 +201,7 @@ export class RedactarInformeComponent extends BaseComponent implements OnInit {
   }
 
   selectComponenteHardware(idComponente: number): void {
+    this.idPastComponentHW = idComponente;
     // Cuando haga click en un componente de tipo hardware de tipo hardware
     // Primero sacamos su id_catalogo y su id_producto del id_componente del arreglo vwcomponentes
     const { producto } = this.vwcomponentes.filter(comp => comp.id_componente === idComponente)[0];
@@ -198,10 +210,46 @@ export class RedactarInformeComponent extends BaseComponent implements OnInit {
     console.log(this.catalogosHWProducto);
   }
 
+  // Traemos los nuevos id_catalogo para cambiar la tabla componente
+  selectNewST(idCatalogo: number): void {
+    this.idNewCatalogoST = idCatalogo;
+  }
+  selectNewHW(idCatalogo: number): void {
+    this.idNewCatalogoHW = idCatalogo;
+  }
 
+  dadoDeBaja(value) {
+    this.dadoBaja = value;
+    console.log(value);
+  }
+  // Guardamos todos los
+  saveAll(): void {
+    // Sacamos el id_asignacion del la incidencia
+    const { asignado, id_equipo } = this.vwincidencias
+      .filter(asig => asig.id_incidencia === this.idIncidencia)[0];
+    const tipoincidencia = this.boolS === true && this.boolH === true
+                            ? 'Software - Hardware' : this.boolS === true
+                            ? 'Software' : 'Hardware';
+    const idCatST = this.idNewCatalogoST;
+    const idCastHW = this.idNewCatalogoHW;
+    const idpastComponenteHW = this.idPastComponentHW;
+    const bajas = this.dadoBaja === 1
+                            ? false : true;
+    // Primero cambiamos el estado a "resuelto" de la tabla "asignacion"
+    // Segundo - Cambiar el caso haya una modificacion en los componentes en la tabla "componentes"
+    // Tercero agregamos a la tabla "informe"
 
-
-
+    console.log(`id_asignacion: ${asignado}`);
+    console.log(`tipoincidencia: ${tipoincidencia}`);
+    console.log(`id_equipo: ${id_equipo}`);
+    console.log(`Descripción sobre el informe: ${this.descripcion}`);
+    console.log(`Hubo bajas en el equipo: ${bajas}`);
+    console.log(`Motivo de las bajas en caso haya: ${this.motivoBaja}`);
+    console.log(`anterior componente eliminar: ${idpastComponenteHW}`);
+    console.log(`New catalogo hw para agregar al componente: ${idCastHW}`);
+    console.log(`New catalogo st para agregar al componente: ${idCatST}`);
+    this.router.navigate(['controlincidencias']);
+  }
 
   private buildForm() {
     this.form = this.formBuilder.group({
@@ -211,12 +259,5 @@ export class RedactarInformeComponent extends BaseComponent implements OnInit {
       image: '',
       description: ['', [Validators.required]]
     });
-  }
-
-  saveProducts(event: Event) {
-    event.preventDefault();
-    if (this.form.valid) {
-      console.log(this.form.value);
-    }
   }
 }

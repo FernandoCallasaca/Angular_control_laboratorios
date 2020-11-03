@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseComponent } from './component/base/base.component';
 import { LoginComponent } from './component/seguridad/login/login.component';
 
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -104,6 +105,7 @@ import { AsignarcomponenteComponent } from './component/asignarcomponente/asigna
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatRadioModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
