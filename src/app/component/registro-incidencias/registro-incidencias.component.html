@@ -49,7 +49,7 @@
                     <mat-label>Elije un laboratorio</mat-label>
                     <mat-select [disabled]="disableSelect.value">
                         <mat-option (click)="cambiarIdLab(option)" *ngFor="let option of laboratorios" [value]="option">
-                            LAB 30{{option}}
+                            {{option}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

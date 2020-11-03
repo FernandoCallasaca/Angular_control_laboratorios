@@ -98,6 +98,8 @@ export class RegistroIncidenciasComponent extends BaseComponent implements OnIni
             return self.indexOf(valor) === indice;
           };
           this.laboratorios = this.equipos.map(equipo => equipo.ubicacion).filter(distinto).sort();
+          console.log('Laboratorios');
+          console.log(this.laboratorios);
         } else {
           this.openSnackBar(result.mensaje, 99);
         }
