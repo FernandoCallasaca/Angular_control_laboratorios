@@ -85,7 +85,7 @@ export class SoportetecnicoeditarComponent extends BaseComponent implements OnIn
   }
 
   guardar( newForm ) {
-    this._general_services.saveDocente(this.soportetecnico, this.getToken().token).subscribe(
+    this._general_services.saveSoporteTecnico(this.soportetecnico, this.getToken().token).subscribe(
       result => {
         try {
           if (result.estado) {

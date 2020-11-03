@@ -158,7 +158,32 @@ export class GeneralService {
           'Authorization': 'Bearer ' + token
       });
       return this._http.post(this.url + 'general/getvwcomponentes', {}, { headers: reqHeader });
-  }
+    }
+    saveComponente(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/savecomponente', data, { headers: reqHeader });
+    }
+    saveSoporteTecnico(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/savesoportetecnico', data, { headers: reqHeader });
+    }
+    deleteSoporteTecnico(data, token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        console.log(data)
+        return this._http.post(this.url + 'general/deletesoportetecnico', data, { headers: reqHeader });
+    }
+
 
 
 

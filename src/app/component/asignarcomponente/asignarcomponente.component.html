@@ -6,7 +6,7 @@
                 <mat-label>Elegir Equipo</mat-label>
                 <mat-select [disabled]="disableSelect.value" required>
                     <mat-option (click)="cambiarIdEquipo(option.id_equipo)" *ngFor="let option of equipos" [value]="option.id_equipo">
-                        {{option.id_equipo}}
+                        PC-{{option.id_equipo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -16,7 +16,8 @@
             <button [disabled]="activarBoton" mat-button color="primary" (click)="elementosSeleccionados($event)">ASIGNAR</button>
         </div>
         <br>
-    
+
+        <h3>Software</h3>    
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             
             <!-- Checkbox Column -->
@@ -37,29 +38,52 @@
                 </td>
             </ng-container>
         
-            <!-- Position Column -->
-            <ng-container matColumnDef="fecha">
-              <th mat-header-cell *matHeaderCellDef> Fecha </th>
-              <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
-            </ng-container>
-        
-            <!-- Weight Column -->
             <ng-container matColumnDef="producto">
               <th mat-header-cell *matHeaderCellDef> Producto </th>
               <td mat-cell *matCellDef="let element"> {{element.producto}} </td>
             </ng-container>
         
-            <!-- Name Column -->
             <ng-container matColumnDef="modelo">
                 <th mat-header-cell *matHeaderCellDef> Modelo </th>
                 <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
               </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="motivo">
-              <th mat-header-cell *matHeaderCellDef> Motivo </th>
-              <td mat-cell *matCellDef="let element"> {{element.motivo}} </td>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+        </table>
+        <br>
+        <h3>Hardware</h3>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
             </ng-container>
+                
+            <ng-container matColumnDef="producto">
+              <th mat-header-cell *matHeaderCellDef> Producto </th>
+              <td mat-cell *matCellDef="let element"> {{element.producto}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="modelo">
+                <th mat-header-cell *matHeaderCellDef> Modelo </th>
+                <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+              </ng-container>
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"

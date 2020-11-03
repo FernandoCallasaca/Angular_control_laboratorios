@@ -45,7 +45,7 @@ export class AsignarcomponenteComponent extends BaseComponent implements OnInit 
     this.getComponentesSinAsignar();
   }
 
-  displayedColumns: string[] = ['select', 'fecha', 'producto', 'modelo', 'motivo'];
+  displayedColumns: string[] = ['select', 'producto', 'modelo'];
 
   dataSource = new MatTableDataSource<Catalogos>(this.componentesSinAsignar);
 
@@ -141,7 +141,7 @@ export class AsignarcomponenteComponent extends BaseComponent implements OnInit 
   }
 
   saveAsignacion( req ) {
-    this.generalService.saveAsignacion(req, this.getToken().token).subscribe(
+    this.generalService.saveComponente(req, this.getToken().token).subscribe(
       result => {
         if (result.estado) {
         } else {
