@@ -63,7 +63,10 @@ import { ControlIncidenciasComponent } from './component/control-incidencias/con
 import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
 import { RedactarInformeComponent } from './component/redactar-informe/redactar-informe.component';
 import { AsignarcomponenteComponent } from './component/asignarcomponente/asignarcomponente.component';
+import { IncidenciaEntreFechasComponent } from './component/incidencia-entre-fechas/incidencia-entre-fechas.component';
 
+import { MatNativeDateModule } from '@angular/material';
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,8 +96,10 @@ import { AsignarcomponenteComponent } from './component/asignarcomponente/asigna
     AsignarIncidenciasComponent,
     RedactarInformeComponent,
     AsignarcomponenteComponent,
+    IncidenciaEntreFechasComponent,
   ],
   imports: [
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

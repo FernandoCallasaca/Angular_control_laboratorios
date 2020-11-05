@@ -23,6 +23,7 @@ import { ControlIncidenciasComponent } from './component/control-incidencias/con
 import { AsignarIncidenciasComponent } from './component/asignar-incidencias/asignar-incidencias.component';
 import { RedactarInformeComponent } from './component/redactar-informe/redactar-informe.component';
 import { AsignarcomponenteComponent } from './component/asignarcomponente/asignarcomponente.component';
+import { IncidenciaEntreFechasComponent } from './component/incidencia-entre-fechas/incidencia-entre-fechas.component';
 
 
 //Array de rutas
@@ -50,6 +51,7 @@ const appRoutes:Routes=[
     {path: 'asignarincidencia', component: AsignarIncidenciasComponent},
     {path: 'redactarinforme', component: RedactarInformeComponent},
     {path: 'asignarcomponente', component: AsignarcomponenteComponent},
+    {path: 'incidenciafechas', component: IncidenciaEntreFechasComponent},
 
 
     {path: '**', component: LoginComponent}

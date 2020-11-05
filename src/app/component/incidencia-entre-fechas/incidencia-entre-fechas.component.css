@@ -1,0 +1,90 @@
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contenedorBody {
+  margin: 1%;
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-fifty-width {
+  width: 50%;
+}
+.example-eighty-width {
+  margin: 15px;
+  width: 100%;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.example-container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.tabla {
+  height: 200px;
+  overflow: auto;
+  width: 40%;
+}
+
+.example-h2 {
+margin: 10px;
+}
+
+.example-section {
+display: flex;
+align-content: center;
+align-items: center;
+height: 60px;
+}
+
+.example-margin {
+margin: 10px;
+}
+
+.section-boolS-boolH {
+width: 100%;
+display: flex;
+align-items: center;
+flex-direction: column;
+border: 1px solid #e6d5d5;
+border-radius: 3%;
+padding: 3px;
+margin: 3px;
+}
+.section-boolS-boolH-group {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.selection-form-field {
+width: 70%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+margin-left: 16px;
+}

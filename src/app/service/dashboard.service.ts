@@ -15,6 +15,14 @@ export class DashboardService {
         this.url = AppSettings.URL;
     }
 
+    getProductoCatalogo(token): Observable<any> {
+      var reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      });
+      return this._http.post(this.url + 'dashboard/getproductocatalogo', {}, { headers: reqHeader });
+    }
+
     getFecha(token): Observable<any> {
         var reqHeader = new HttpHeaders({
             'Content-Type': 'application/json',

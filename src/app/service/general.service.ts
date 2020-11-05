@@ -184,6 +184,13 @@ export class GeneralService {
         return this._http.post(this.url + 'general/deletesoportetecnico', data, { headers: reqHeader });
     }
 
+    getIncidenciasEntre2Fechas(req,token): Observable<any> {
+        var reqHeader = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        });
+        return this._http.post(this.url + 'general/getincidenciaentredosfechas', req, { headers: reqHeader });
+    }
 
 
 
